@@ -1,0 +1,3616 @@
+%!PS-Adobe-3.0
+%%Title: C:\Users\Daniel\Documents\IAC\ProjectoTron\p3print_win\Projecto_TRON.as
+%%For: Daniel
+%%Creator: a2ps version 4.13
+%%CreationDate: Fri Dec 05 14:13:23 2014
+%%BoundingBox: 24 24 571 818
+%%DocumentData: Clean7Bit
+%%Orientation: Landscape
+%%Pages: 11
+%%PageOrder: Ascend
+%%DocumentMedia: A4 595 842 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-BoldOblique
+%%+ font Courier-Oblique
+%%+ font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Symbol
+%%+ font Times-Bold
+%%+ font Times-Roman
+%%DocumentProcessColors: Black 
+%%Requirements: Tumble Duplex 
+%%DocumentSuppliedResources: procset a2ps-a2ps-hdr
+%%+ procset a2ps-black+white-Prolog
+%%+ encoding ISO-8859-1Encoding
+%%EndComments
+/a2psdict 200 dict def
+a2psdict begin
+%%BeginProlog
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+
+% EPSF import as in the Red Book
+/BeginInclude {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack 
+  userdict begin
+    0 setgray 0 setlinecap
+    1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [ ] 0 setdash newpath
+    gs_languagelevel 1 ne {
+      false setstrokeadjust false setoverprint 
+    } if
+} bind def
+
+/EndInclude {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+/BeginEPSF {
+  BeginInclude
+  /showpage { } def
+} bind def
+
+/EndEPSF {
+  EndInclude
+} bind def
+
+% Page prefeed
+/page_prefeed {         % bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} bind def
+
+/deffont {
+  findfont exch scalefont def
+} bind def
+
+/reencode_font {
+  findfont reencode 2 copy definefont pop def
+} bind def
+
+% Function c-show (str => -)
+% centers text only according to x axis.
+/c-show { 
+  dup stringwidth pop
+  2 div neg 0 rmoveto
+  show
+} bind def
+
+% Function l-show (str => -)
+% prints texts so that it ends at currentpoint
+/l-show {
+  dup stringwidth pop neg 
+  0 
+  rmoveto show
+} bind def
+
+% center-fit show (str w => -)
+% show centered, and scale currentfont so that the width is less than w
+/cfshow {
+  exch dup stringwidth pop
+  % If the title is too big, try to make it smaller
+  3 2 roll 2 copy
+  gt
+  { % if, i.e. too big
+    exch div
+    currentfont exch scalefont setfont
+  } { % ifelse
+    pop pop 
+  }
+  ifelse
+  c-show			% center title
+} bind def
+
+% Return the y size of the current font
+% - => fontsize
+/currentfontsize {
+  currentfont /FontMatrix get 3 get 1000 mul
+} bind def
+
+% reencode the font
+% <encoding-vector> <fontdict> -> <newfontdict>
+/reencode { %def
+  dup length 5 add dict begin
+    { %forall
+      1 index /FID ne 
+      { def }{ pop pop } ifelse
+    } forall
+    /Encoding exch def
+
+    % Use the font's bounding box to determine the ascent, descent,
+    % and overall height; don't forget that these values have to be
+    % transformed using the font's matrix.
+    % We use `load' because sometimes BBox is executable, sometimes not.
+    % Since we need 4 numbers an not an array avoid BBox from being executed
+    /FontBBox load aload pop
+    FontMatrix transform /Ascent exch def pop
+    FontMatrix transform /Descent exch def pop
+    /FontHeight Ascent Descent sub def
+
+    % Define these in case they're not in the FontInfo (also, here
+    % they're easier to get to.
+    /UnderlinePosition 1 def
+    /UnderlineThickness 1 def
+    
+    % Get the underline position and thickness if they're defined.
+    currentdict /FontInfo known {
+      FontInfo
+      
+      dup /UnderlinePosition known {
+	dup /UnderlinePosition get
+	0 exch FontMatrix transform exch pop
+	/UnderlinePosition exch def
+      } if
+      
+      dup /UnderlineThickness known {
+	/UnderlineThickness get
+	0 exch FontMatrix transform exch pop
+	/UnderlineThickness exch def
+      } if
+      
+    } if
+    currentdict 
+  end 
+} bind def
+
+% Function print line number (<string> # -)
+/# {
+  gsave
+    sx cw mul neg 2 div 0 rmoveto
+    f# setfont
+    c-show
+  grestore
+} bind def
+
+% -------- Some routines to enlight plain b/w printings ---------
+
+% Underline
+% width --
+/dounderline {
+  currentpoint
+  gsave
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    0 rlineto
+    stroke
+  grestore
+} bind def
+
+% Underline a string
+% string --
+/dounderlinestring {
+  stringwidth pop
+  dounderline
+} bind def
+
+/UL {
+  /ul exch store
+} bind def
+
+% Draw a box of WIDTH wrt current font
+% width --
+/dobox {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    stroke
+  grestore
+} bind def
+
+/BX {
+  /bx exch store
+} bind def
+
+% Box a string
+% string --
+/doboxstring {
+  stringwidth pop
+  dobox
+} bind def
+
+%
+% ------------- Color routines ---------------
+%
+/FG /setrgbcolor load def
+
+% Draw the background
+% width --
+/dobackground {
+  currentpoint
+  gsave
+    newpath
+    moveto
+    0 currentfont /Descent get currentfontsize mul rmoveto
+    dup 0 rlineto
+    0 currentfont /FontHeight get currentfontsize mul rlineto
+    neg 0 rlineto
+    closepath
+    bgcolor aload pop setrgbcolor
+    fill
+  grestore
+} bind def
+
+% Draw bg for a string
+% string --
+/dobackgroundstring {
+  stringwidth pop
+  dobackground
+} bind def
+
+
+/BG {
+  dup /bg exch store
+  { mark 4 1 roll ] /bgcolor exch store } if
+} bind def
+
+
+/Show {
+  bg { dup dobackgroundstring } if
+  ul { dup dounderlinestring } if
+  bx { dup doboxstring } if
+  show
+} bind def
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T {
+  cw mul x0 add
+  bg { dup currentpoint pop sub dobackground } if
+  ul { dup currentpoint pop sub dounderline } if
+  bx { dup currentpoint pop sub dobox } if
+  y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n {
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+/S {
+  Show
+} bind def
+
+%%BeginResource: procset a2ps-a2ps-hdr 2.0 2
+%%Copyright: (c) 1988, 89, 90, 91, 92, 93 Miguel Santana
+%%Copyright: (c) 1995, 96, 97, 98 Akim Demaille, Miguel Santana
+% Function title: prints page header.
+% <ct> <rt> <lt> are passed as argument
+/title { 
+  % 1. Draw the background
+  x v get y v get moveto
+  gsave
+    0 th 2 div neg rmoveto 
+    th setlinewidth
+    0.95 setgray
+    pw 0 rlineto stroke
+  grestore
+  % 2. Border it
+  gsave
+    0.7 setlinewidth
+    pw 0 rlineto
+    0 th neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+  % stk: ct rt lt
+  x v get y v get th sub 1 add moveto
+%%IncludeResource: font Helvetica
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  % 3. The left title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    fnfs 0.8 mul hm rmoveto
+    show			% left title
+  grestore
+  exch
+  % stk: ct ltw rt
+  % 4. the right title
+  gsave
+    dup stringwidth pop fnfs 0.8 mul add exch % leave space took on stack
+    dup
+    pw exch stringwidth pop fnfs 0.8 mul add sub
+    hm
+    rmoveto
+    show			% right title
+  grestore
+  % stk: ct ltw rtw
+  % 5. the center title
+  gsave
+    pw 3 1 roll
+    % stk: ct pw ltw rtw
+    3 copy 
+    % Move to the center of the left room
+    sub add 2 div hm rmoveto
+    % What is the available space in here?
+    add sub fnfs 0.8 mul sub fnfs 0.8 mul sub
+    % stk: ct space_left
+%%IncludeResource: font Helvetica-Bold
+  fHelvetica-Bold fnfs scalefont setfont
+    cfshow
+  grestore
+} bind def
+
+% Function border: prints virtual page border
+/border { %def
+  gsave				% print four sides
+    0 setgray
+    x v get y v get moveto
+    0.7 setlinewidth		% of the square
+    pw 0 rlineto
+    0 ph neg rlineto
+    pw neg 0 rlineto
+    closepath stroke
+  grestore
+} bind def
+
+% Function water: prints a water mark in background
+/water { %def
+  gsave
+    scx scy moveto rotate
+%%IncludeResource: font Times-Bold
+  fTimes-Bold 100 scalefont setfont
+    .97 setgray
+    dup stringwidth pop 2 div neg -50 rmoveto
+    show
+  grestore
+} bind def
+
+% Function rhead: prints the right header
+/rhead {  %def
+  lx ly moveto
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  l-show
+} bind def
+
+% Function footer (cf rf lf -> -)
+/footer {
+  fHelvetica fnfs 0.8 mul scalefont setfont
+  dx dy moveto
+  show
+
+  snx sny moveto
+  l-show
+  
+  fnx fny moveto
+  c-show
+} bind def
+%%EndResource
+%%BeginResource: procset a2ps-black+white-Prolog 2.0 1
+
+% Function T(ab), jumps to the n-th tabulation in the current line
+/T { 
+  cw mul x0 add y0 moveto
+} bind def
+
+% Function n: move to the next line
+/n { %def
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+} bind def
+
+% Function N: show and move to the next line
+/N {
+  Show
+  /y0 y0 bfs sub store
+  x0 y0 moveto
+}  bind def
+
+/S {
+  Show
+} bind def
+
+/p {
+  false UL
+  false BX
+  fCourier bfs scalefont setfont
+  Show
+} bind def
+
+/sy {
+  false UL
+  false BX
+  fSymbol bfs scalefont setfont
+  Show
+} bind def
+
+/k {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/K {
+  false UL
+  false BX
+  fCourier-Bold bfs scalefont setfont
+  Show
+} bind def
+
+/c {
+  false UL
+  false BX
+  fCourier-Oblique bfs scalefont setfont
+  Show
+} bind def
+
+/C {
+  false UL
+  false BX
+  fCourier-BoldOblique bfs scalefont setfont
+  Show 
+} bind def
+
+/l {
+  false UL
+  false BX
+  fHelvetica bfs scalefont setfont
+  Show
+} bind def
+
+/L {
+  false UL
+  false BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show 
+} bind def
+
+/str{
+  false UL
+  false BX
+  fTimes-Roman bfs scalefont setfont
+  Show
+} bind def
+
+/e{
+  false UL
+  true BX
+  fHelvetica-Bold bfs scalefont setfont
+  Show
+} bind def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier
+%%IncludeResource: font Courier-Oblique
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Times-Roman
+%%IncludeResource: font Symbol
+%%IncludeResource: font Courier-BoldOblique
+%%BeginResource: encoding ISO-8859-1Encoding
+/ISO-8859-1Encoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quoteright 
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash 
+/zero /one /two /three /four /five /six /seven 
+/eight /nine /colon /semicolon /less /equal /greater /question 
+/at /A /B /C /D /E /F /G 
+/H /I /J /K /L /M /N /O 
+/P /Q /R /S /T /U /V /W 
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore 
+/quoteleft /a /b /c /d /e /f /g 
+/h /i /j /k /l /m /n /o 
+/p /q /r /s /t /u /v /w 
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef 
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section 
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron 
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /bullet 
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown 
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla 
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis 
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply 
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls 
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla 
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis 
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide 
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis 
+] def
+%%EndResource
+% Initialize page description variables.
+/sh 595 def
+/sw 842 def
+/llx 24 def
+/urx 818 def
+/ury 571 def
+/lly 24 def
+/#copies 1 def
+%% Pagedevice definitions:
+countdictstack
+% Push our own mark, since there can be several PS marks pushed depending
+% where the failure really occured.
+/a2ps_mark
+{
+%%BeginFeature: *Tumble False
+  (<<) cvx exec /Tumble (false) cvx exec (>>) cvx exec setpagedevice
+%%EndFeature
+%%BeginFeature: *Duplex True
+  (<<) cvx exec /Duplex (true) cvx exec (>>) cvx exec setpagedevice
+%%EndFeature
+} stopped
+% My cleartomark
+{ /a2ps_mark eq { exit } if } loop
+countdictstack exch sub dup 0 gt
+{
+  { end } repeat
+}{
+  pop
+} ifelse
+/th 15.000000 def
+/fnfs 11 def
+/bfs 8.005733 def
+/cw 4.803440 def
+
+% Dictionary for ISO-8859-1 support
+/iso1dict 8 dict begin
+  /fCourier ISO-8859-1Encoding /Courier reencode_font
+  /fCourier-Bold ISO-8859-1Encoding /Courier-Bold reencode_font
+  /fCourier-BoldOblique ISO-8859-1Encoding /Courier-BoldOblique reencode_font
+  /fCourier-Oblique ISO-8859-1Encoding /Courier-Oblique reencode_font
+  /fHelvetica ISO-8859-1Encoding /Helvetica reencode_font
+  /fHelvetica-Bold ISO-8859-1Encoding /Helvetica-Bold reencode_font
+  /fTimes-Bold ISO-8859-1Encoding /Times-Bold reencode_font
+  /fTimes-Roman ISO-8859-1Encoding /Times-Roman reencode_font
+currentdict end def
+/bgcolor [ 0 0 0 ] def
+/bg false def
+/ul false def
+/bx false def
+% The font for line numbering
+/f# /Helvetica findfont bfs .6 mul scalefont def
+/fSymbol /Symbol findfont def
+/hm fnfs 0.25 mul def
+/pw
+   cw 81.400000 mul
+def
+/ph
+   501.959430 th add
+def
+/pmw urx llx sub pw 2 mul sub 1 div def
+/pmh 0 def
+/v 0 def
+/x [
+  0
+  dup pmw add pw add
+] def
+/y [
+  pmh ph add 0 mul ph add
+  dup
+] def
+/scx sw 2 div def
+/scy sh 2 div def
+/snx urx def
+/sny lly 2 add def
+/dx llx def
+/dy sny def
+/fnx scx def
+/fny dy def
+/lx snx def
+/ly ury fnfs 0.8 mul sub def
+/sx 0 def
+/tab 8 def
+/x0 0 def
+/y0 0 def
+%%EndSetup
+
+%%Page: (1-2) 1
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (2014/2015) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Projecto de Introducao a Arquitetura de Computadores) S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (  ) S 32 T (  ;) N
+(;) S 8 T (TRON) S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Turno: 13) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T ( ) S 80 T () N
+(  ;) N
+(;) S 8 T (Grupo: 24) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T ( ) S 72 T ( ) S 80 T () N
+(  ;) N
+(;) S 8 T () S 16 T (   Daniel Correia, aluno 80967) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (  ;) N
+(;) S 8 T () S 16 T (   Ines Leite, aluna 81328) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ;) N
+(;) S 8 T (       Joao Palma, aluno 81212 ) S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (     ) S 32 T () S 40 T () S 48 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(================================================================================) p n
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (Constant) N
+(es) S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+(  ) S 8 T (  ;) N
+(================================================================================) p n
+(===========) N
+(SP_INICIAL) S 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (FDFFh) S 48 T () S 56 T () S
+(;Stack pointer inicial) c n
+(IO_WRITE) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (FFFEh) S 48 T () S 56 T () S
+(;Endereco para escrever ) c n
+(na janela de texto) N
+(IO_CONTROL) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (FFFCh) S 48 T () S 56 T () S
+(;Endereco para posiciona) c n
+(r o cursor na janela de texto) N
+(Inicial) p 8 T () S 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (0110h) S 48 T () S 56 T () S
+(;Posicao onde se comeca ) c n
+(a escrever o mapa ) N
+(Final) p 8 T () S 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (1610h) S 48 T () S 56 T () S
+(;Posicao onde se escreve) c n
+( a ultima linha do mapa) N
+(Fim) p 8 T () S 16 T () S 24 T () S 32 T () S
+(EQU) K
+() p 40 T () S 48 T ('@') S 56 T () S 64 T () S 72 T () S
+(;Simbolo) c n
+( para detetar o fim de uma string) N
+(Posicao1) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (0C18h) S 48 T () S 56 T () S
+(;Posicao inicial do joga) c n
+(dor 1) N
+(Posicao2) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (0C38h) S 48 T () S 56 T () S
+(;Posicao inicial do joga) c n
+(dor 2) N
+(Bemvindo_P1) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (0C21H) S 48 T () S 56 T () S
+(;Posicao da primeira lin) c n
+(ha de Bem-vindo) N
+(Bemvindo_P2) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (0D1Dh) S 48 T () S 56 T () S
+(;Posicao da segunda linh) c n
+(a de Bem-vindo) N
+(FimJogo_P1) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (0C24h) S 48 T () S 56 T () S
+(;Posicao da primeira lin) c n
+(ha de Fim Jogo) N
+(FimJogo_P2) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (0D1Ch) S 48 T () S 56 T () S
+(;Posicao da segunda linh) c n
+(a de Fim Jogo) N
+(Baixo) p 8 T () S 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (000Bh) S 48 T () S 56 T () S
+(;Associado a direcao par) c n
+(a baixo) N
+(Cima) p 8 T () S 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (000Ch) S 48 T () S 56 T () S
+(;Associado a direcao par) c n
+(a cima) N
+(Direita) p 8 T () S 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (000Dh) S 48 T () S 56 T () S
+(;Associado a direcao par) c n
+(a a direita) N
+(Esquerda) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (000Eh) S 48 T () S 56 T () S
+(;Associado a direcao par) c n
+(a a esquerda) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 1/21) (dez 05, 14 11:21) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(INT) K
+(_MASK_ADDR   ) p
+(EQU) K
+(     FFFAh) p 32 T () S 40 T () S 48 T () S 56 T () S
+(;Endereco onde e colocad) c n
+(a a INT_MASK ) N
+(INT) K
+(_MASK        ) p
+(EQU) K
+(     1000101010000011b ) p 48 T () S
+(;Mascara das interrupcoes) c n
+(TIMER_CONTROL) p 16 T () S
+(EQU) K
+() p 24 T () S 32 T (FFF7h) S 40 T () S 48 T () S
+(;Endereco do temporizador ) c n
+(TIMER_VALUE) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (FFF6h   ) S 56 T () S
+(;Endereco para colocar o) c n
+( valor do temporizador) N
+(IO_DISPLAY      ) p
+(EQU) K
+(     FFF0h) p 32 T () S 40 T () S
+(;Endereco para ativar o Display) c n
+(NIBBLE_MASK     ) p
+(EQU) K
+(     000fh) p n
+(NUM_NIBBLES     ) S
+(EQU) K
+(     4) p n
+(BITS_PER_NIBBLE ) S
+(EQU) K
+(     4 ) p n
+(LED_DISPLAY) S 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (FFF8h) S 48 T () S 56 T () S
+(;Endereco para ativar os) c n
+( LEDs) N
+(LCD_WRITE) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (FFF5h) S 48 T () S 56 T () S
+(;Endereco para escrever ) c n
+(no LCD) N
+(LCD_CURSOR) p 16 T () S 24 T () S
+(EQU) K
+() p 32 T () S 40 T (FFF4h) S 48 T () S 56 T () S
+(;Endereco para posiciona) c n
+(r o cursor no LCD) N
+(LCD_CURSOR_MJ1) p 16 T () S
+(EQU) K
+() p 24 T () S 32 T (8010h) S 40 T () S 48 T () S
+(;Posicao da string "J1: " no LCD) c n
+(LCD_CURSOR_MJ2) p 16 T () S
+(EQU) K
+() p 24 T () S 32 T (801ah) S 40 T () S 48 T () S
+(;Posicao da string "J2: " no LCD) c n
+(LCD_MTEMPOMAX) p 16 T () S
+(EQU) K
+() p 24 T () S 32 T (8000h) S 40 T () S 48 T () S
+(;Posicao da string "TEMPO MAX:  ) c n
+(   s" no LCD) N
+(LCD_CURSOR_J1) p 16 T () S
+(EQU) K
+() p 24 T () S 32 T (8015h) S 40 T () S 48 T () S
+(;Posicao da pontuacao do jogador) c n
+( 1 no LCD) N
+(LCD_CURSOR_J2) p 16 T () S
+(EQU) K
+() p 24 T () S 32 T (801fh) S 40 T () S 48 T () S
+(;Posicao da pontuacao do jogador) c n
+( 2 no LCD) N
+(LCD_TEMPOMAX) p 16 T () S
+(EQU) K
+() p 24 T () S 32 T (800eh) S 40 T () S 48 T () S
+(;Posicao do valor do tempo maxim) c n
+(o no LCD) N
+(Interruptores) p 16 T () S
+(EQU) K
+() p 24 T () S 32 T (FFF9h) S 40 T () S 48 T () S
+(;Endereco associado aos interrup) c n
+(tores) N
+(================================================================================) p n
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (Variavei) N
+(s) S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+(      ;) N
+(================================================================================) p n
+(===========) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ORIG) K
+() p 40 T (8020h) N
+(linha1) S 8 T () S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('+--------------------------------------) N
+(----------+', Fim) N
+(linha2) S 8 T () S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('|                                      ) N
+(          |', Fim) N
+(limpajanela) S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('                                       ) N
+(                                    ', Fim) N
+(jogador1) S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('X', Fim) N
+(jogador2) S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('#', Fim) N
+(Bemvindo_M1) S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('Bem-vindo ao TRON', Fim) N
+(Bemvindo_M2) S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('Pressione I1 para comecar', Fim ) N
+(FimJogo_M1) S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('Fim do Jogo', Fim ) N
+(FimJogo_M2) S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('Pressione I1 para recomecar', Fim ) N
+(LCD_Tempo) S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('TEMPO MAX:     s', Fim) N
+(LCD_J1) S 8 T () S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('J1: ', Fim) N
+(LCD_J2) S 8 T () S 16 T () S 24 T () S
+(STR) K
+() p 32 T () S 40 T ('J2: ', Fim) N
+(Posicao_J1) S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (0C18h) S 40 T () S 48 T () S
+(;Posicao do jogador 1 durante o ) c n
+(jogo) N
+(Posicao_J2) p 16 T () S 24 T () S
+(WORD) K
+() p 32 T (0C38h) S 40 T () S 48 T () S
+(;Posicao do jogador 2 durante o ) c n
+(jogo) N
+(Direcao_J1) p 16 T () S 24 T () S
+(WORD) K
+() p 32 T (000Dh) S 40 T () S 48 T () S
+(;Direcao do jogador 1 durante o ) c n
+(jogo) N
+(Direcao_J2) p 16 T () S 24 T () S
+(WORD) K
+() p 32 T (000Eh) S 40 T () S 48 T () S
+(;Direcao do jogador 2 durante o ) c n
+(jogo) N
+(FlagI1) p 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (0) S 40 T () S 48 T () S 56 T () S
+(;Interrupcao para comeca) c n
+(r ou recomecar o jogo) N
+(FlagI0) p 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (0) S 40 T () S 48 T () S 56 T () S
+(;Interrupcao para o joga) c n
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 2/21) (dez 05, 14 11:21) title
+border
+grestore
+(Printed by Daniel) rhead
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (1/11) (sexta-feira dezembro 05, 2014) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (3-4) 2
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(dor 1 virar a esquerda) c n
+(FlagIB) p 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (0) S 40 T () S 48 T () S 56 T () S
+(;Interrupcao para o joga) c n
+(dor 1 virar a direita) N
+(FlagI7) p 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (0) S 40 T () S 48 T () S 56 T () S
+(;Interrupcao para o joga) c n
+(dor 2 virar a esquerda) N
+(FlagI9) p 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (0) S 40 T () S 48 T () S 56 T () S
+(;Interrupcao para o joga) c n
+(dor 2 virar a direita) N
+(Flag_Colisao_J1) p 16 T () S
+(WORD) K
+() p 24 T (0) S 32 T () S 40 T () S 48 T () S
+(;Flag que ativa quando o jogador) c n
+( 1 colide) N
+(Flag_Colisao_J2) p 16 T () S
+(WORD) K
+() p 24 T (0) S 32 T () S 40 T () S 48 T () S
+(;Flag que ativa quando o jogador) c n
+( 2 colide) N
+(Flag_Colisao) p 16 T () S
+(WORD) K
+() p 24 T (0) S 32 T () S 40 T () S 48 T () S
+(;Flag que ativa quando ocorre um) c n
+(a colisao ) N
+(Pontuacao_J1) p 16 T () S
+(WORD) K
+() p 24 T (00h) S 32 T () S 40 T () S 48 T () S
+(;Pontuacao do jogador 1) c n
+(Pontuacao_J2) p 16 T () S
+(WORD) K
+() p 24 T (00h) S 32 T () S 40 T () S 48 T () S
+(;Pontuacao do jogador 2) c n
+(Tempo) p 8 T () S 16 T (    ) S
+(WORD) K
+(    0000h) p 40 T () S 48 T () S
+(;Tempo de jogo mostrado no displ) c n
+(ay) N
+(Tempo_Max) p 16 T () S 24 T () S
+(WORD) K
+() p 32 T (0000h) S 40 T () S 48 T () S
+(;Tempo maximo de jogo) c n
+(Temp_Jogo) p 16 T () S 24 T () S
+(WORD) K
+() p 32 T (0) S 40 T () S 48 T () S 56 T () N
+(Temp_Velocidade) S 16 T () S
+(WORD) K
+() p 24 T (0) N
+(Velocidade) S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (7h) S 40 T () S 48 T () S 56 T () S
+(;Velocidade dos jogadore) c n
+(s) N
+(LEDS) p 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (0000h) S 40 T () S 48 T () S
+(;LEDS que devem estar ligados) c n
+(Conta_Rasto_J1) p 16 T () S
+(WORD) K
+() p 24 T (0) S 32 T () S 40 T () S 48 T () S
+(;Contador de posicoes do rasto d) c n
+(o jogador 1) N
+(Conta_Rasto_J2) p 16 T () S
+(WORD) K
+() p 24 T (0) S 32 T () S 40 T () S 48 T () S
+(;Contador de posicoes do rasto d) c n
+(o jogador 2) N
+(Rasto_J1) p 16 T () S 24 T () S
+(TAB) K
+() p 32 T () S 40 T (500d) S 48 T () S 56 T () S
+(;Posicoes de memoria par) c n
+(a guardar o rasto do jogador 1) N
+(Rasto_J2) p 16 T () S 24 T () S
+(TAB) K
+() p 32 T () S 40 T (500d) S 48 T () S 56 T () S
+(;Posicoes de memoria par) c n
+(a guardar o rasto do jogador 1) N
+(================================================================================) p n
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (    Tabela de Interrupco) N
+(es) S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (   ) S 72 T (  ;) N
+(================================================================================) p n
+(===========) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ORIG) K
+() p 40 T (FE00h) N
+(INT) K
+(0) p 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (Interrupcao0) N
+(INT) K
+(1) p 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (Interrupcao1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ORIG) K
+() p 40 T (FE07h) N
+(INT) K
+(7) p 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (Interrupcao7) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ORIG) K
+() p 40 T (FE09h) N
+(INT) K
+(9) p 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (Interrupcao9) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ORIG) K
+() p 40 T (FE0Bh) N
+(INTB) S 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (InterrupcaoB) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ORIG) K
+() p 40 T (FE0Fh) N
+(Int10) S 8 T () S 16 T () S 24 T () S
+(WORD) K
+() p 32 T (Temporizador) N
+(================================================================================) N
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T ( Codigo) S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (   ) S 80 T () N
+(  ;) N
+(================================================================================) p n
+(===========) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ORIG) K
+() p 40 T (0000h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R7, SP_INICIAL) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (SP,R7) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+(     R7, ) p
+(INT) K
+(_MASK) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+(     M[) p
+(INT) K
+(_MASK_ADDR], R7) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R7,FFFFh) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[IO_CONTROL], R7) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 3/21) (dez 05, 14 11:21) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(ENI) K n
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (Inicio) N
+(================================================================================) N
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (  Rotinas de Apoio a Interrupcao) N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (  ) S 56 T (  ;) N
+(================================================================================) p n
+(===========) S 16 T () S 24 T () S 32 T () N
+(Interrupcao0:) S 16 T () S
+(INC) K
+() p 24 T () S 32 T (M[FlagI0]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RTI) K n
+(Interrupcao1:) p 16 T () S
+(INC) K
+() p 24 T () S 32 T (M[FlagI1]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RTI) K n
+(Interrupcao7:) p 16 T () S
+(INC) K
+() p 24 T () S 32 T (M[FlagI7]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RTI) K n
+(Interrupcao9:) p 16 T () S
+(INC) K
+() p 24 T () S 32 T (M[FlagI9]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RTI) K n
+(InterrupcaoB:) p 16 T () S
+(INC) K
+() p 24 T () S 32 T (M[FlagIB]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RTI) K n
+(Temporizador:) p 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R3,1h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RTI) K
+() p 40 T () S 48 T () N
+() N
+(================================================================================) N
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T (  Rotinas de Escrita na Janela de Texto) S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T ( ) S 32 T () S 40 T () S 48 T (  ;) N
+(================================================================================) p n
+(===========) S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (EscreveCar) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (  ) S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R2\(posicao\), R3\(caracter\)) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (  ) S 56 T (  ;) N
+(;) S 8 T (Efeitos: Escreve caracter na posicao.) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (   ) S 48 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(EscreveCar:) p 16 T () S 24 T () S
+(PUSH) K
+() p 32 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[IO_CONTROL], R2) S 72 T () S
+(;posicao) c n
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[IO_WRITE],R3) S 64 T () S 72 T () S
+(;car a e) c n
+(screver) N
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (EscreveStr) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(string\), R2\(posicao\), R3\(caracter da string\)) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (  ) S 32 T (  ;) N
+(;) S 8 T (Efeitos: Escreve a string na posicao.) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (  ) S 48 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(EscreveStr:) p 16 T () S 24 T () S
+(PUSH) K
+() p 32 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+(CicloEscString:) S 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R3,M[R1]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R3,Fim) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 4/21) (dez 05, 14 11:21) title
+border
+grestore
+(Printed by Daniel) rhead
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (2/11) (sexta-feira dezembro 05, 2014) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (5-6) 3
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (FimEscString) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveCar) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (CicloEscString) N
+(FimEscString:) S 16 T () S
+(POP) K
+() p 24 T () S 32 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () S 48 T () S 56 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (Bemvindo) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T ( ) S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(mensagem\), R2\(posicao\)) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (   ) S 32 T () S 40 T () S 48 T (  ) S 56 T (  ;) N
+(;) S 8 T (Efeitos: Escreve as mensagens do inicio do jogo.) S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T (  ) S 40 T (  ;) S 48 T ( ) S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T (   ) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(Bemvindo:) p 16 T () S 24 T () S
+(PUSH) K
+() p 32 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, Bemvindo_P1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, Bemvindo_M1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveStr) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, Bemvindo_P2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, Bemvindo_M2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveStr) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () S 48 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (Fim_Jogo) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(linha em branco\), R2\(posicao\)) S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (  ) S 48 T (  ;) N
+(;) S 8 T (Efeitos: Escreve a mensagem de fim de jogo) S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (   ) S 48 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(Fim_Jogo:) p 16 T () S 24 T () S
+(PUSH) K
+() p 32 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, FimJogo_M1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, FimJogo_P1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveStr) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, FimJogo_M2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, FimJogo_P2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveStr) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (DesenhaMapa) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T ( ) S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(linha a escrever\), R2\(posicao\)) S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T ( ) S 48 T (  ;) N
+(;) S 8 T (Efeitos: Desenha a moldura na janela de texto.) S 56 T () S 64 T () S 72 T () S 80 T () N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 5/21) (dez 05, 14 11:21) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() c 0 T () S 8 T () S 16 T () S 24 T () S 32 T (   ) S 40 T (  ;) S 48 T ( ) S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T (   ) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(DesenhaMapa:) p 16 T () S
+(PUSH) K
+() p 24 T (R1) S 32 T () S 40 T () S 48 T () S 56 T () S
+(;desenha linhas "+-----+) c n
+(") N
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, Inicial) S 64 T () S 72 T () S
+(;posicao) c n
+( inicial) N
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, linha1) S 64 T () S
+(;"+") c n
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveStr) N
+(Colunas:) S 16 T () S 24 T () S
+(ADD) K
+() p 32 T () S 40 T (R2, 0100h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, linha2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+( ) p 40 T (EscreveStr) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R2, Final) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.NZ) K
+() p 40 T (Colunas) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, linha1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveStr) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () S 48 T () S 56 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (PosicoesIni) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (  ) S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(simbolo do jogador\), R2\(posicao do jogador\)) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (   ) S 32 T (  ;) N
+(;) S 8 T (Efeitos: Coloca os jogadores nas suas posicoes iniciais.) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (   ) S 32 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(PosicoesIni:) p 16 T () S
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, jogador1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, Posicao1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R3, Rasto_J1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Posicao_J1], R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[R3], R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveStr) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, jogador2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, Posicao2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R3, Rasto_J2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveStr) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Posicao_J2], R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[R3], R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (MudaPosicao) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (   ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(simbolo do jogador\), R2\(posicao\), R3\(contador de ciclos\), R) N
+(4\(direcao\) ) S 16 T (  ;) N
+(;) S 8 T (Efeitos: Escreve o simbolo dos jogadores na posicao seguinte) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T (   ) S 24 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 6/21) (dez 05, 14 11:21) title
+border
+grestore
+(Printed by Daniel) rhead
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (3/11) (sexta-feira dezembro 05, 2014) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (7-8) 4
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(MudaPosicao:) p 16 T () S
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R4) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R6) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Temp_Velocidade], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (VerificaDirecao) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R6, Rasto_J1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R5, M[Conta_Rasto_J1]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R4, M[Direcao_J1]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, M[Posicao_J1]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R3, R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, jogador1) N
+(CicloMuda:) S 16 T () S 24 T () S
+(CMP) K
+() p 32 T () S 40 T (R4, Baixo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP.Z) K
+() p 40 T (MudaBaixo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R4, Cima) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP.Z) K
+() p 40 T (MudaCima) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R4, Direita) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP.Z) K
+() p 40 T (MudaDireita) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R4, Esquerda) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP.Z) K
+() p 40 T (MudaEsquerda) N
+(MudaPosicao2:) S 16 T () S
+(CMP) K
+() p 24 T () S 32 T (R3, 2h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP.Z) K
+() p 40 T (MudaFim) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Conta_Rasto_J1], R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ADD) K
+() p 40 T () S 48 T (R6,R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R5,R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[R6], R2 ) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Posicao_J1], R2) S 72 T () S
+(;atualiz) c n
+(ar a posicao do jogador 1 antes de mover o jogador 2) N
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R6, Rasto_J2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R5, M[Conta_Rasto_J2]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R4, M[Direcao_J2]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, M[Posicao_J2]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, jogador2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (CicloMuda) N
+(MudaBaixo:) S 16 T () S 24 T () S
+(ADD) K
+() p 32 T () S 40 T (R2,0100h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (EscreveNovo) N
+(MudaCima:) S 16 T () S 24 T () S
+(SUB) K
+() p 32 T () S 40 T (R2,0100h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (EscreveNovo) N
+(MudaDireita:) S 16 T () S
+(INC) K
+() p 24 T () S 32 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (EscreveNovo) N
+(MudaEsquerda:) S 16 T () S
+(DEC) K
+() p 24 T () S 32 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (EscreveNovo) N
+() N
+(EscreveNovo:) S 16 T () S
+(CALL) K
+() p 24 T (EscreveStr) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+( ) p 40 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (MudaPosicao2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () N
+(MudaFim:) S 16 T () S 24 T () S
+(MOV) K
+() p 32 T () S 40 T (M[Conta_Rasto_J2], R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ADD) K
+() p 40 T () S 48 T (R6,R5 ) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+(     M[R6], R2) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Posicao_J2], R2) S 72 T () S 80 T () S
+() c n
+(;no MudaFim, R2 tem o valor da nova posicao do jogador 2) N
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R6) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R4) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () S 48 T () N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 7/21) (dez 05, 14 11:21) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(================================================================================) p n
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (  Rotinas de Controlo da Direcao) N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (      ;) N
+(================================================================================) p n
+(===========) S 16 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (VerificaDirecao) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (   ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1 \(direcao do jogador\)) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T (   ) S 24 T () S 32 T () S 40 T () S 48 T (   ) S 56 T (  ;) N
+(;) S 8 T (Efeitos: Verifica a direcao do jogador com base nas acoes dos utilizador) N
+(es) S 8 T () S 16 T (   ) S 24 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(VerificaDirecao:) p
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, M[Direcao_J1]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (M[FlagI0],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL.NZ) K
+() p 40 T (ViraEsquerda) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (M[FlagIB],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL.NZ) K
+() p 40 T (ViraDireita) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Direcao_J1], R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, M[Direcao_J2]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (M[FlagI7],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL.NZ) K
+() p 40 T (ViraEsquerda) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (M[FlagI9],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL.NZ) K
+() p 40 T (ViraDireita) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Direcao_J2],R1) N
+(ResetFlags:) S 16 T () S 24 T () S
+(MOV) K
+() p 32 T () S 40 T (M[FlagI0],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[FlagI7],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[FlagI9],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[FlagIB],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (ViraEsquerda) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (   ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(direcao inicial\)) S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (   ) S 56 T (  ;) N
+(;) S 8 T (Saidas:) S 16 T (R1 \(nova direcao\)) S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (   ) S 64 T (  ;) N
+(;) S 8 T (Efeitos: Altera a direcao do jogador para a esquerda) S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (   ) S 32 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () N
+(ViraEsquerda:) p 16 T () S
+(CMP) K
+() p 24 T () S 32 T (R1, Baixo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (DirecaoDireitaE) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1, Cima) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (DirecaoEsqE) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1, Direita) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (DirecaoCimaE) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1, Esquerda) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (DirecaoBaixoE) N
+() S 8 T () S 16 T () S 24 T () S 32 T () N
+(DirecaoBaixoE:) S 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R1,Baixo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (FimViraEsq) N
+(DirecaoCimaE:) S 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R1,Cima) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (FimViraEsq) N
+(DirecaoDireitaE:) S
+(MOV) K
+() p 24 T () S 32 T (R1,Direita) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (FimViraEsq) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 8/21) (dez 05, 14 11:21) title
+border
+grestore
+(Printed by Daniel) rhead
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (4/11) (sexta-feira dezembro 05, 2014) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (9-10) 5
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(DirecaoEsqE:) p 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R1,Esquerda) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (FimViraEsq) N
+() S 8 T () S 16 T () S 24 T () S 32 T () N
+(FimViraEsq:) S 16 T () S 24 T () S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (ViraDireita) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (   ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(direcao inicial\)) S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (   ) S 56 T (  ;) N
+(;) S 8 T (Saidas:) S 16 T (R1 \(nova direcao\)) S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (   ) S 64 T (  ;) N
+(;) S 8 T (Efeitos: Altera a direcao do jogador para a direita) S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T (   ) S 40 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(ViraDireita:) p 16 T () S
+(CMP) K
+() p 24 T () S 32 T (R1, Baixo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (DirecaoEsqD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1, Cima) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (DirecaoDireitaD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1, Direita) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (DirecaoBaixoD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1, Esquerda) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (DirecaoCimaD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () N
+(DirecaoBaixoD:) S 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R1,Baixo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (FimViraDir) N
+(DirecaoCimaD:) S 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R1,Cima) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (FimViraDir) N
+(DirecaoDireitaD:) S
+(MOV) K
+() p 24 T () S 32 T (R1,Direita) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (FimViraDir) N
+(DirecaoEsqD:) S 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R1,Esquerda) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (FimViraDir) N
+() N
+(FimViraDir:) S 16 T () S 24 T () S
+(RET) K
+() p 32 T () S 40 T () N
+(================================================================================) N
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (Rotinas de Colis) N
+(ao) S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+(  ;) N
+(================================================================================) p n
+(===========) S 16 T () S 24 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (VerificaColisao) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (   ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(posicao do jogador\), R3\(auxiliar das flags de colisao\)) S 80 T () N
+() S 0 T () S 8 T () S 16 T (   ) S 24 T (  ;) N
+(;) S 8 T (Efeitos: Verifica se ocorreu colisao e altera a pontuacao do jogo) S 80 T () N
+() S 0 T () S 8 T () S 16 T (   ) S 24 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(VerificaColisao:) p
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, M[Posicao_J1]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R3,R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ColisaoLinhas) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ColisaoColunas) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ColisaoRastoJ2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ColisaoRastoJ1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Flag_Colisao_J1], R3) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 9/21) (dez 05, 14 11:21) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R3,R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, M[Posicao_J2]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ColisaoLinhas) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ColisaoColunas) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ColisaoRastoJ1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ColisaoRastoJ2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Flag_Colisao_J2],R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () S 48 T () S 56 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (ColisaoLinhas) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(posicao do jogador\)) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (   ) S 56 T (  ;) N
+(;) S 8 T (Efeitos: Verifica se ocorreu colisao com o topo ou base do mapa) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T (  ) S 24 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () N
+(ColisaoLinhas:) p 16 T () S
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+() p 40 T () S 48 T (R1, FF00h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1, 1600h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (ColisaoMapaLin) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1, 0100h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (ColisaoMapaLin) N
+(ColisaoLinFim:) S 16 T () S
+(POP) K
+() p 24 T () S 32 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+() p n
+(ColisaoMapaLin: ) S
+(MOV) K
+() p 24 T () S 32 T (R3,1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Flag_Colisao],R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (ColisaoLinFim) N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (ColisaoColunas) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T ( ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(posicao do jogador\)) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (  ) S 56 T (  ;) N
+(;) S 8 T (Efeitos: Verifica se ocorreu colisao com o topo ou base do mapa) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T (  ) S 24 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(ColisaoColunas:) p 16 T () S
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+() p 40 T () S 48 T (R1, 00FFh) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1, 0010h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (ColisaoMapaCol) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1, 0041h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (ColisaoMapaCol) N
+(ColisaoColFim:) S 16 T () S
+(POP) K
+() p 24 T () S 32 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+() p n
+(ColisaoMapaCol:) S 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R3,1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Flag_Colisao],R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (ColisaoColFim) N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (ColisaoRastoJ1) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(posicao do jogador\), R2 \(rasto do jogador 1\),) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (  ) S 32 T (  ;) N
+(;) S 8 T () S 16 T () S 24 T (  R4 \(contador\), R5 \(numero de posicoes do rasto\)) S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T (  ) S 40 T (  ;) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 10/21) (dez 05, 14 11:21) title
+border
+grestore
+(Printed by Daniel) rhead
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (5/11) (sexta-feira dezembro 05, 2014) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (11-12) 6
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(;) c 8 T (Efeitos: Verifica se ocorreu colisao com o rasto do jogador 1) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T (  ) S 24 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(ColisaoRastoJ1:) p 16 T () S
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R4) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R4,R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, Rasto_J1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R5, M[Conta_Rasto_J1]) N
+(CicloRastoJ1:) S 16 T () S
+(CMP) K
+() p 24 T () S 32 T (R1, M[R2]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (ColisaoRasto1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (R4) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R4,R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.NZ) K
+() p 40 T (CicloRastoJ1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (FimCicloRastoJ1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () N
+(ColisaoRasto1:) S 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R3,1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Flag_Colisao],R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (FimCicloRastoJ1) N
+() N
+(FimCicloRastoJ1:) S
+(POP) K
+() p 24 T () S 32 T (R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R4) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (ColisaoRastoJ2) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(posicao do jogador\), R2 \(rasto do jogador 2\),) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T ( ) S 32 T (  ;) N
+(;) S 8 T () S 16 T () S 24 T (  R4 \(contador\), R5 \(numero de posicoes do rasto\)) S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T (  ) S 40 T (  ;) N
+(;) S 8 T (Efeitos: Verifica se ocorreu colisao com o rasto do jogador 2) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T (  ) S 24 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(ColisaoRastoJ2:) p 16 T () S
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R4) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R4,R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R5, M[Conta_Rasto_J2]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, Rasto_J2) N
+(CicloRastoJ2:) S 16 T () S
+(CMP) K
+() p 24 T () S 32 T (R1, M[R2]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (ColisaoRasto2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+( ) p 40 T (R4) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R4,R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.NZ) K
+() p 40 T (CicloRastoJ2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (FimCicloRastoJ2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () N
+(ColisaoRasto2:) S 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R3,1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Flag_Colisao],R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (FimCicloRastoJ2) N
+() N
+(FimCicloRastoJ2:) S
+(POP) K
+() p 24 T () S 32 T (R5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R4) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 11/21) (dez 05, 14 11:21) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () S 48 T () S 56 T () S 64 T () S 72 T () N
+(================================================================================) N
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T ( Rotinas do Temporizador) N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (  ) S 64 T (  ;) N
+(================================================================================) p n
+(===========) N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (Temp) S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(intervalo de contagem\), R2\(controlo do temporizador\), ) S 80 T () N
+() S 0 T () S 8 T () S 16 T (  ) S 24 T (  ;) N
+(;) S 8 T () S 16 T () S 24 T (  R3 \(registo auxiliar associado a rotina de interrupcao) N
+(\) ) S 8 T () S 16 T () S 24 T () S 32 T (  ) S 40 T (  ;) N
+(;) S 8 T (Efeitos: Utiliza o temporizador para contar 0,1s) S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T (  ) S 40 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(Temp:         ) p 16 T () S
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R3,R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, 1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, 1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[TIMER_VALUE], R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+( ) p 40 T (M[TIMER_CONTROL], R2) N
+(Temp_Ciclo:) S 16 T () S 24 T () S
+(CMP) K
+() p 32 T () S 40 T (R3,R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.NZ) K
+(  ) p 40 T (Temp_Ciclo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () S 48 T () S 56 T () S 64 T () S 72 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(; ContDec:) S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+(  ;) N
+(;       Entradas: R1\(tempo de jogo\), R2 e R3 \(operadores da conversao para segun) N
+(dos) S 8 T () S 16 T (  ;) N
+(;       Efeitos: Incrementa o tempo de jogo e devolve-o em segundos em 4bits) S 80 T () N
+() S 0 T () S 8 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(ContDec:) p 16 T () S 24 T () S
+(PUSH) K
+() p 32 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1,M[Tempo]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2,000Fh) S 64 T () S 72 T () N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R3,R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+() p 40 T () S 48 T (R1,R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1,0009h) S 64 T () S 72 T () S
+(;teste p) c n
+(ara ultimo bit igual a 9) N
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP.NZ) K
+() p 40 T (Soma) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, FFF0h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+() p 40 T () S 48 T (M[Tempo], R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+(     R2, 00F0h) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+(     R3, R2) p 48 T () N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+() p 40 T () S 48 T (R2, M[Tempo]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R2,0090h) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 12/21) (dez 05, 14 11:21) title
+border
+grestore
+(Printed by Daniel) rhead
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (6/11) (sexta-feira dezembro 05, 2014) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (13-14) 7
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP.NZ) K
+() p 40 T (Soma) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, FF0Fh) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+() p 40 T () S 48 T (M[Tempo], R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+(     R2, 0F00h) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+(     R3,R2) p 48 T () N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+() p 40 T () S 48 T (R2, M[Tempo]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R2,0900h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP.NZ) K
+() p 40 T (Soma) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, F0FFh) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+() p 40 T () S 48 T (M[Tempo], R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+(     R2, F000h) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+(     R3, R2) p 48 T () N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+() p 40 T () S 48 T (R2, M[Tempo]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R2, 9000h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP.NZ) K
+() p 40 T (Soma) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R4,R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () N
+(FimCont:) S 16 T () S 24 T () S
+(POP) K
+() p 32 T () S 40 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+() p 8 T () S 16 T () S 24 T () S 32 T () N
+(Soma:) S 8 T () S 16 T () S 24 T () S
+(MOV) K
+(     R1, 1111h) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+( ) p 40 T (R1, R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ADD) K
+() p 40 T () S 48 T (M[Tempo], R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (FimCont) N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (EscCont) S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (   ) S 72 T (   ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1 \(tempo de jogo\), R2\(numero de nibbles\), R3\(endereco do disp) N
+(lay\)) S 8 T (   ) S 16 T (  ;) N
+(;) S 8 T (Efeitos: Efetua a escrita do tempo de jogo no display ) S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (   ) S 32 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(EscCont:        ) p
+(PUSH) K
+(    R1) p n
+(                ) S
+(PUSH) K
+(    R2) p n
+(                ) S
+(PUSH) K
+(    R3) p n
+(                ) S
+(DSI) K n
+(                ) p
+(MOV) K
+(     R2, NUM_NIBBLES) p n
+(                ) S
+(MOV) K
+(     R3, IO_DISPLAY) p n
+(CicloEsc:       ) S
+(MOV) K
+(     R1, M[Tempo]) p n
+(                ) S
+(AND) K
+(     R1, NIBBLE_MASK) p n
+(                ) S
+(MOV) K
+(     M[R3], R1) p n
+(                ) S
+(ROR) K
+(     M[Tempo], BITS_PER_NIBBLE) p n
+(                ) S
+(INC) K
+(     R3) p n
+(                ) S
+(DEC) K
+(     R2) p n
+(                ) S
+(JMP.NZ) K
+(   CicloEsc) p n
+(                ) S
+(ENI) K n
+(                ) p
+(POP) K
+(     R3) p n
+(                ) S
+(POP) K
+(     R2) p n
+(                ) S
+(POP) K
+(     R1) p n
+(                ) S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (VerNivelLEDSVel) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (  ) S 64 T (  ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(tempo de jogo\), R2\(velocidade\), R3\(LEDS a ligar\)) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T (  ) S 24 T (  ;) N
+(;) S 8 T (Efeitos: Verifica o nivel em funcao do tempo de jogo) S 64 T () S 72 T () S 80 T () N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 13/21) (dez 05, 14 11:21) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() c 0 T () S 8 T () S 16 T () S 24 T (  ) S 32 T (  ;) N
+(;) S 8 T () S 16 T () S 24 T ( Altera a velocidade dos jogadores e os LEDS a ligar) S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (  ) S 32 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(VerNivelLEDSVel:) p
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, M[Tempo]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, M[Velocidade]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T ( R3, M[LEDS]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1,10) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.N) K
+() p 40 T (Nivel1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1,20h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.N) K
+() p 40 T (Nivel2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1,40h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.N) K
+() p 40 T (Nivel3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1,60h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.N) K
+() p 40 T (Nivel4) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.NN) K
+() p 40 T (Nivel5) N
+() S 8 T () S 16 T () S 24 T () S 32 T () N
+(Nivel1:) S 8 T () S 16 T () S 24 T () S
+(MOV) K
+() p 32 T () S 40 T (R2, 7h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (NivelFim) N
+(Nivel2:) S 8 T () S 16 T () S 24 T () S
+(MOV) K
+() p 32 T () S 40 T (R2, 5h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R3, 000Fh) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (NivelFim) S 64 T () S 72 T () S 80 T () N
+() S 0 T () N
+(Nivel3:) S 8 T () S 16 T () S 24 T () S
+(MOV) K
+() p 32 T () S 40 T (R2, 3h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R3, 00FFh) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (NivelFim) S 64 T () S 72 T () S 80 T () N
+() S 0 T () N
+(Nivel4:) S 8 T () S 16 T () S 24 T () S
+(MOV) K
+() p 32 T () S 40 T (R2, 2h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R3, 0FFFh) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (NivelFim) S 64 T () S 72 T () S 80 T () N
+() S 0 T () N
+(Nivel5:) S 8 T () S 16 T () S 24 T () S
+(MOV) K
+() p 32 T () S 40 T (R2, 1h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R3, FFFFh) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (NivelFim) S 64 T () S 72 T () S 80 T () N
+() S 0 T () N
+() N
+(NivelFim:) S 16 T () S 24 T () S
+(MOV) K
+() p 32 T () S 40 T (M[Tempo], R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Velocidade], R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[LED_DISPLAY],R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[LEDS], R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () N
+(================================================================================) N
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T ( Rotinas do LCD) S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (  ;) N
+(================================================================================) p n
+(===========) N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (EscreveCarLCD) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(caracter a escrever\), R2\(posicao no LCD\)) S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (  ) S 32 T (  ;) N
+(;) S 8 T (Efeitos: Escreve o caracter na posicao do LCD) S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T (  ) S 40 T (  ;) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 14/21) (dez 05, 14 11:21) title
+border
+grestore
+(Printed by Daniel) rhead
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (7/11) (sexta-feira dezembro 05, 2014) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (15-16) 8
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(EscreveCarLCD:) p 16 T () S
+(PUSH) K
+() p 24 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[LCD_CURSOR], R2) S 72 T () S
+(;posicao) c n
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[LCD_WRITE],R3) S 64 T () S 72 T () S
+(;car a e) c n
+(screver) N
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (EscreveStrLCD) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(string a escrever\), R2\(posicao no LCD\), R3\(caracter da stri) N
+(ng\)) S 8 T () S 16 T (  ) S 24 T (  ;) N
+(;) S 8 T (Efeitos: Escreve a string na posicao do LCD) S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (  ) S 48 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(EscreveStrLCD:) p 16 T () S
+(PUSH) K
+() p 24 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+(CicloEscStrLCD:) S 16 T () S
+(MOV) K
+() p 24 T () S 32 T (R3,M[R1]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R3,Fim) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (FimEscStringLCD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveCarLCD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR) K
+() p 40 T () S 48 T (CicloEscStrLCD) N
+(FimEscStringLCD:) S
+(POP) K
+() p 24 T () S 32 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () S 48 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (TextoLCD) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (  ) S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(texto a escrever\), R2\(posicao no LCD\)) S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T ( ) S 40 T (  ;) N
+(;) S 8 T (Efeitos: Escreve o tempo maximo no LCD) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (  ) S 48 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(TextoLCD:) p 16 T () S 24 T () S
+(PUSH) K
+() p 32 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, LCD_MTEMPOMAX) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, LCD_Tempo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveStrLCD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, LCD_CURSOR_MJ1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, LCD_J1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveStrLCD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, LCD_CURSOR_MJ2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, LCD_J2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscreveStrLCD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () S 48 T () S 56 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (EscContLCD) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 15/21) (dez 05, 14 11:21) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() c 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (  ) S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(tempo maximo de jogo\), R2\(auxiliar\), R3\(posicao no LCD\)) S 80 T () N
+() S 0 T () S 8 T (  ) S 16 T (  ;) N
+(;) S 8 T (Efeitos: Escreve o tempo maximo no LCD) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (   ) S 48 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(EscContLCD:     ) p
+(PUSH) K
+(    R1) p n
+(                ) S
+(PUSH) K
+(    R2) p n
+(                ) S
+(PUSH) K
+(    R3) p n
+(                ) S
+(MOV) K
+(     R2, 4) p n
+(                ) S
+(MOV) K
+(     R3, LCD_TEMPOMAX) p n
+(CicloEscLCD:    ) S
+(MOV) K
+(     R1, M[Tempo_Max]) p n
+(                ) S
+(AND) K
+(     R1, 000fh) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ADD) K
+() p 40 T () S 48 T (R1, 0030h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[LCD_CURSOR], R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[LCD_WRITE], R1) N
+(                ) S
+(MOV) K
+(     M[R3], R1) p n
+(                ) S
+(ROR) K
+(     M[Tempo_Max], 4) p n
+(                ) S
+(DEC) K
+(     R3) p n
+(                ) S
+(DEC) K
+(     R2) p n
+(                ) S
+(JMP.NZ) K
+(   CicloEscLCD) p n
+(                ) S
+(POP) K
+(     R3) p n
+(                ) S
+(POP) K
+(     R2) p n
+(                ) S
+(POP) K
+(     R1) p n
+(                ) S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (PontosJ1_LCD) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (  ) S 64 T (  ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(pontuacao do jogador 1\), R2\(auxiliar\), R3\(posicao no LCD\)) S 80 T () N
+() S 0 T () S 8 T (  ) S 16 T (  ;) N
+(;) S 8 T (Efeitos: Escreve a pontuacao do jogador 1 no LCD) S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T (  ) S 40 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(PontosJ1_LCD:) p 16 T () S
+(PUSH) K
+(    R1) p n
+(                ) S
+(PUSH) K
+(    R2) p n
+(                ) S
+(PUSH) K
+(    R3) p n
+(                ) S
+(MOV) K
+(     R2,4) p n
+(                ) S
+(MOV) K
+(     R3, LCD_CURSOR_J1) p n
+(CicloPontosJ1: ) S 16 T () S
+(MOV) K
+(     R1, M[Pontuacao_J1]) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+(     R1, 000fh) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ADD) K
+() p 40 T () S 48 T (R1, 0030h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[LCD_CURSOR], R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[LCD_WRITE], R1) N
+(                ) S
+(MOV) K
+(     M[R3], R1) p n
+(                ) S
+(ROR) K
+(     M[Pontuacao_J1], 4) p n
+(                ) S
+(DEC) K
+(     R3) p n
+(                ) S
+(DEC) K
+(     R2) p n
+(                ) S
+(JMP.NZ) K
+(   CicloPontosJ1) p n
+(                ) S
+(POP) K
+(     R3) p n
+(                ) S
+(POP) K
+(     R2) p n
+(                ) S
+(POP) K
+(     R1) p n
+(                ) S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (PontosJ2_LCD) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (  ) S 64 T ( ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(pontuacao do jogador 2\), R2\(auxiliar\), R3\(posicao no LCD\)) S 80 T () N
+() S 0 T () S 8 T (  ) S 16 T (  ;) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 16/21) (dez 05, 14 11:21) title
+border
+grestore
+(Printed by Daniel) rhead
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (8/11) (sexta-feira dezembro 05, 2014) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (17-18) 9
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(;) c 8 T (Efeitos: Escreve a pontuacao do jogador 2 no LCD) S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T (  ) S 40 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(PontosJ2_LCD:) p 16 T () S
+(PUSH) K
+(    R1) p n
+(                ) S
+(PUSH) K
+(    R2) p n
+(                ) S
+(PUSH) K
+(    R3) p n
+(                ) S
+(MOV) K
+(     R2,4) p n
+(                ) S
+(MOV) K
+(     R3, LCD_CURSOR_J2) p n
+(CicloPontosJ2: ) S 16 T () S
+(MOV) K
+(     R1, M[Pontuacao_J2]) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+(     R1, 000fh) p n
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ADD) K
+() p 40 T () S 48 T (R1, 0030h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[LCD_CURSOR], R3) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[LCD_WRITE], R1) N
+(                ) S
+(MOV) K
+(     M[R3], R1) p n
+(                ) S
+(ROR) K
+(     M[Pontuacao_J2], 4) p n
+(                ) S
+(DEC) K
+(     R3) p n
+(                ) S
+(DEC) K
+(     R2) p n
+(                ) S
+(JMP.NZ) K
+(   CicloPontosJ2) p n
+(                ) S
+(POP) K
+(     R3) p n
+(                ) S
+(POP) K
+(     R2) p n
+(                ) S
+(POP) K
+(     R1) p n
+(                ) S
+(RET) K n
+() p 8 T () S 16 T () S 24 T () S 32 T () N
+(================================================================================) N
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T ( Rotinas de Fim de Jogo) S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (  ) S 64 T (  ;) N
+(================================================================================) p n
+(===========) S 16 T () S 24 T () S 32 T () S 40 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (Pontuacoes) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: Flag_Colisao_J1,Flag_Colisao_J2,Pontuacao_J1,Pontuacao_J2) S 80 T () N
+() S 0 T () S 8 T () S 16 T (   ) S 24 T (  ;) N
+(;) S 8 T (Efeitos: Altera as pontuacoes dos jogadores) S 56 T (em funcao do resultado d) N
+(o jogo) S 8 T () S 16 T (  ) S 24 T (  ; ) S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T (   ) S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(Pontuacoes:) p 16 T () S 24 T () S
+(CMP) K
+() p 32 T () S 40 T (M[Flag_Colisao_J1], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (VitoriaJ1) S 56 T () S 64 T () N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (M[Flag_Colisao_J2], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (VitoriaJ2) N
+(Empate:) S 8 T () S 16 T () S 24 T () S
+(RET) K n
+() p n
+(VitoriaJ1:) S 16 T () S 24 T () S
+(INC) K
+() p 32 T () S 40 T (M[Pontuacao_J1]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+() p 8 T () S 16 T () S 24 T () N
+(VitoriaJ2:) S 16 T () S 24 T () S
+(INC) K
+() p 32 T () S 40 T (M[Pontuacao_J2]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+() p n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (TempoMaximo) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(tempo de jogo\)) S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (  ) S 64 T (  ;) N
+(;) S 8 T (Efeitos: Altera o valor do tempo maximo de jogo.) S 64 T () S 72 T () S 80 T () N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 17/21) (dez 05, 14 11:21) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() c 0 T () S 8 T () S 16 T () S 24 T () S 32 T (  ) S 40 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(TempoMaximo:) p 16 T () S
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, M[Tempo]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R1, M[Tempo_Max]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.NP) K
+() p 40 T (FimTempoMax) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Tempo_Max], R1) N
+(FimTempoMax:) S 16 T () S
+(POP) K
+() p 24 T () S 32 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+() p 8 T () S 16 T () S 24 T () S 32 T () N
+(================================================================================) N
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (Rotinas de Reset do Jogo) N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T ( ) S 64 T (  ;) N
+(================================================================================) p n
+(===========) N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (LimpaJanela) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(linha em branco\), R2\(posicao\)) S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (  ) S 48 T (  ;) N
+(;) S 8 T (Efeitos: Limpa a janela de texto.) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (  ) S 56 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(LimpaJanela:) p 16 T () S
+(PUSH) K
+( ) p 24 T (R1 ) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+( ) p 40 T (R1, limpajanela ) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2, 0000h ) N
+(CicloLimpa:) S 16 T () S 24 T () S
+(CALL) K
+( ) p 32 T (EscreveStr) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, limpajanela ) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(AND) K
+( ) p 40 T (R2,) S 48 T (ff00h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ADD) K
+() p 40 T () S 48 T (R2,0100h ) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R2,1800h ) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.NZ) K
+() p 40 T (CicloLimpa ) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T (R1 ) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T (R2 ) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K
+() p 40 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (LimpaRastos) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (   ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(rasto\), R2\(posicao\)) S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (  ) S 56 T (  ;) N
+(;) S 8 T (Efeitos: Limpa as posicoes do rasto guardadas em memoria.) S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T (  ) S 32 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(LimpaRastos:) p 16 T () S
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(PUSH) K
+() p 40 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1, Rasto_J1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R2,R0) N
+(Ciclo_Limpa:) S 16 T () S
+(MOV) K
+() p 24 T () S 32 T (M[R1],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R2,999h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.NZ) K
+() p 40 T (Ciclo_Limpa) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R2) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 18/21) (dez 05, 14 11:21) title
+border
+grestore
+(Printed by Daniel) rhead
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (9/11) (sexta-feira dezembro 05, 2014) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (19-20) 10
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (ResPosDirecao) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ;) N
+(;) S 8 T (Entradas: R1\(registo auxiliar\)) S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (  ) S 48 T (  ) S 56 T (  ;) N
+(;) S 8 T (Efeitos: Reset das posicoes e direcoes dos jogadores para os valores ini) N
+(ciais.) S 8 T (   ) S 16 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () N
+(ResPosDirecao:) p 16 T () S
+(PUSH) K
+() p 24 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1,Posicao1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Posicao_J1],R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1,Direita) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Direcao_J1],R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1,Posicao2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Posicao_J2],R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1,Esquerda) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Direcao_J2],R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (ResetFlagsJogo) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ;) N
+(;) S 8 T (Efeitos: Reset das flags de jogo e dos contadores associados ao temporiz) N
+(ador) S 8 T (  ) S 16 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(ResetFlagsJogo:) p 16 T () S
+(MOV) K
+() p 24 T () S 32 T (M[FlagI1], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[FlagI0],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[FlagI7],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[FlagI9],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[FlagIB],R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Flag_Colisao], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Flag_Colisao_J1], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Flag_Colisao_J2], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Temp_Velocidade], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Temp_Jogo], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (ResTempo) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Entradas: R1\(registo auxiliar\)) S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (  ) S 48 T (   ) S 56 T (  ;) N
+(;) S 8 T (Efeitos: Reset do tempo de jogo, velocidade, LEDS e  contador de posicoe) N
+(s do rasto ) S 16 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(ResetTempo:) p 16 T () S 24 T () S
+(PUSH) K
+() p 32 T (R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1,0000h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Tempo], R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[LEDS], R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R1,7h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Velocidade], R1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Conta_Rasto_J1], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (M[Conta_Rasto_J2], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(POP) K
+() p 40 T () S 48 T (R1) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 19/21) (dez 05, 14 11:21) title
+border
+/v 1 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(================================================================================) p n
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (Rotinas do Programa Principal) S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T (  ) S 56 T (  ;) N
+(================================================================================) p n
+(===========) S 16 T () S 24 T () S 32 T () S 40 T () N
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (AtualizaTempo) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ;) N
+(;) S 8 T (Efeitos: Altera o valor do tempo de jogo) S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (  ) S 48 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(AtualizaTempo:) p 16 T () S
+(MOV) K
+() p 24 T () S 32 T (M[Temp_Jogo], R0) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ContDec) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscCont) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (Movimentos) S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T (  ) S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Efeitos: Movimenta os jogadores e verifica se ocorreram colisoes) S 80 T () N
+() S 0 T () S 8 T () S 16 T (  ) S 24 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) N
+(Movimentos:) p 16 T () S 24 T () S
+(CALL) K
+() p 32 T (MudaPosicao) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (VerificaColisao) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(;-------------------------------------------------------------------------------) c n
+(----------;) N
+(;) S 8 T (FimJogo) S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T (  ) S 64 T (   ) S 72 T (  ) S 80 T () N
+(  ;) N
+(;) S 8 T (Efeitos: Escreve mensagem de fim de jogo ) S 56 T () S 64 T () S 72 T () S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T () S 40 T (  ) S 48 T (  ;) N
+(;) S 8 T () S 16 T () S 24 T ( Atualiza as pontuacoes e o tempo maximo no LCD ) S 80 T () N
+() S 0 T () S 8 T () S 16 T () S 24 T () S 32 T (  ) S 40 T (  ;) N
+(;-------------------------------------------------------------------------------) N
+(----------;) S 16 T () S 24 T () S 32 T () S 40 T () N
+(FimJogo:) p 16 T () S 24 T () S
+(CALL) K
+() p 32 T (Fim_Jogo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (Pontuacoes) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (TempoMaximo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (PontosJ1_LCD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (PontosJ2_LCD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (TextoLCD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (EscContLCD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(RET) K n
+(================================================================================) p n
+(===========) N
+(;) c 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T ( Codigo Principa) N
+(l) S 8 T () S 16 T () S 24 T () S 32 T () S 40 T () S 48 T () S 56 T () S 64 T () S 72 T (  ) S 80 T () N
+(  ;) N
+(================================================================================) p n
+(===========) S 16 T () S 24 T () S 32 T () S 40 T () N
+(Inicio:) S 8 T () S 16 T () S 24 T () S
+(MOV) K
+() p 32 T () S 40 T (M[FFFCh], R2) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (Bemvindo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (TextoLCD) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ENI) K n
+(Comecar:) p 16 T () S 24 T () S
+(CMP) K
+() p 32 T () S 40 T (M[FlagI1],R0) N
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 20/21) (dez 05, 14 11:21) title
+border
+grestore
+(Printed by Daniel) rhead
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (10/11) (sexta-feira dezembro 05, 2014) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (21) 11
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.362408 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.Z) K
+() p 40 T (Comecar) N
+(Base_Jogo:) S 16 T () S 24 T () S
+(CALL) K
+() p 32 T (LimpaJanela) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (LimpaRastos) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ResPosDirecao) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ResetFlagsJogo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (ResetTempo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (DesenhaMapa) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+( ) p 40 T (PosicoesIni) N
+(Ciclo_Temp:) S 16 T () S 24 T () S
+(ENI) K n
+(Pausa:) p 8 T () S 16 T () S 24 T () S
+(MOV) K
+() p 32 T () S 40 T (R4, M[Interruptores]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(TEST) K
+() p 40 T (R4, 0080h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(BR.NZ) K
+() p 40 T (Pausa) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (Temp) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (M[Temp_Jogo]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(INC) K
+() p 40 T () S 48 T (M[Temp_Velocidade]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R4,M[Temp_Jogo]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R4, 10d) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL.Z) K
+() p 40 T (AtualizaTempo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL) K
+() p 40 T (VerNivelLEDSVel) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R4, M[Temp_Velocidade]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R4, M[Velocidade]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CALL.Z) K
+() p 40 T (Movimentos) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(MOV) K
+() p 40 T () S 48 T (R4, M[Flag_Colisao]) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(CMP) K
+() p 40 T () S 48 T (R4,1h) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP.Z) K
+() p 40 T (Ciclo1) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (Ciclo_Temp) N
+(Ciclo1:) S 8 T () S 16 T () S 24 T () S
+(CALL) K
+() p 32 T (FimJogo) N
+() S 8 T () S 16 T () S 24 T () S 32 T () S
+(ENI) K n
+() p 8 T () S 16 T () S 24 T () S 32 T () S
+(JMP) K
+() p 40 T () S 48 T (Comecar) S
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (Page 21/21) (dez 05, 14 11:21) title
+border
+grestore
+(Printed by Daniel) rhead
+(C:\\Users\\Daniel\\Documents\\IAC\\ProjectoTron\\p3print_win\\Projecto_TRON.as) (11/11) (sexta-feira dezembro 05, 2014) footer
+end % of iso1dict
+pagesave restore
+showpage
+
+%%Trailer
+end
+%%EOF
