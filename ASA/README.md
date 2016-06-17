@@ -1,5 +1,6 @@
 - Projectos individuais.
 - Inclui enunciados, relatórios e testes de cada projeto.
+
 Projecto 1
   > Identificar "articulations points" utilizando DFS.
   > Nota: 20.0/20.0
