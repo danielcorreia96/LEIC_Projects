@@ -9,6 +9,6 @@ Ano 1
 
 Ano 2
   * SO: Sistemas Operativos (C)
-  * PO: Programação com Objetos (Java)
+  * PO: Programação com Objetos (Java) (coming soon...)
   * ASA: Análise e Sintese de Algoritmos (C++)
-  * IPM: Interfaces Pessoa Máquina (HTML/CSS/Javascript/JQuery)
+  * IPM: Interfaces Pessoa Máquina (HTML/CSS/Javascript/JQuery) (coming soon...)
