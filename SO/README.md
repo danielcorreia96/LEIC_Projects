@@ -1,4 +1,6 @@
 Projecto de Sistemas Operativos (2º Ano 2º Semestre)
+
+Grupo de 3 alunos
 - Linguagem: C
 - Desenvolvimento de uma shell, chamada par-shell, que permite executar e monitorizar lotes de programas em paralelo numa máquina multi-core.
 - Nota final: 18,6/20,0
