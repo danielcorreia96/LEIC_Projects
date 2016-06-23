@@ -1,4 +1,6 @@
 Projectos de Introdução a Algoritmos e Estruturas de Dados (1º Ano 2º Semestre)
+
+Grupo de 3 alunos
 - Linguagem: C
 - Nota Final: 19.8/20.0
 
