@@ -2,7 +2,7 @@
 
 This repository contains the source code and other docs of course projects developed during my Bachelor's Degree in Computer Science and Engineering organized by year.
 
-Note: the original portuguese course name is "LEIC-A" which stands for "Licenciatura em Engenharia Informática e de Computadores - Alameda.
+Note: the original portuguese course name is "LEIC-A" which stands for "Licenciatura em Engenharia Informática e de Computadores - Alameda".
 
 ### First Year
   * [Foundations of Programming (Python)](/First_Year/Foundations_of_Programming/)
