@@ -1,5 +1,8 @@
 # LEIC-Projects
-Projectos desenvolvidos para as cadeiras de LEIC-A (Licenciatura em Engenharia Informática e de Computadores - Alameda)
+
+This repository contains the source code and other docs of course projects developed during my Bachelor's Degree in Computer Science and Engineering organized by year.
+
+Note: the original portuguese course name is "LEIC-A" which stands for "Licenciatura em Engenharia Informática e de Computadores - Alameda.
 
 ### Ano 1
   * [Fundamentos da Programação (Python)] (Ano 1/FP)
