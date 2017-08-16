@@ -17,10 +17,10 @@ Note: the original portuguese course name is "LEIC-A" which stands for "Licencia
   * [Human Computer Interaction (HTML/CSS/JS/JQuery)](/Second_Year/Human_Computer_Interaction/)
   
 ### Third Year 
-  * Computer Graphics (Javascript) (coming soon...)
-  * Databases (SQL/PHP) (coming soon...)
+  * [Computer Graphics (Javascript)](/Third_Year/Computer_Graphics/)
+  * [Databases (SQL/PHP)](/Third_Year/Databases/)
   * Artificial Intelligence (Common Lisp) (coming soon...)
-  * Computer Networks (Python) (coming soon...)
+  * [Computer Networks (Python)](/Third_Year/Computer_Networks/)
   * Distributed Systems (Java) (coming soon...)
   * Software Engineering (Java) (coming soon...)
   * Compilers (C++) (coming soon...)
