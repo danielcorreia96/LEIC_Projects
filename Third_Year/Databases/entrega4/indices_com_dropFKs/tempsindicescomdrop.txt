@@ -1,0 +1,12 @@
+query 1
+- default sem FK indices: 0.092446, 0.087126
+- sem FK indices + indice fiscaliza id: 0.087784
+- sem FK indices + indice fiscaliza (morada,codigo): 0.121242
+
+
+query 2
+- default sem FKs: 0.013586
+- default sem FKs + indice no estado(estado): 0.013695
+- default sem FKs + indice no posto(morada, codigo): 0.014936
+- default sem FKs + indice no posto(morada, codigo_espaco): 0.015717
+- default sem FKs + indice no posto(morada, codigo, codigo_espaco): 0.161922

@@ -1,0 +1,8 @@
+query 1
+- sem indice: 0.058285
+- com indice btree no fiscaliza(id): 0.064257,0.059501
+- com indice btree no arrenda(morada, codigo, nif): 0.062223
+
+query 2
+- sem indice: 0.014319
+- com indice btree no estado(estado): 0.014015, 0.014473
