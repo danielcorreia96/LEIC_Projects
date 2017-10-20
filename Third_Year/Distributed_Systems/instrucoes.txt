@@ -1,0 +1,19 @@
+Instruções para correr os testes
+
+1. Abrir consola para Fornecedor 1:
+   cd supplier-ws
+   mvn compile exec:java
+
+2. Abrir consola para Fornecedor 2:
+   cd supplier-ws
+   mvn compile exec:java -Dws.i=2
+
+3. Abrir consola para Fornecedor 3 (este fornecedor só usado em alguns testes do método GetItems):
+  cd supplier-ws
+  mvn compile exec:java -Dws.i=3
+
+4. Abrir consola para Mediador:
+   cd mediator-ws
+   mvn compile exec:java
+
+5. Correr os testes em supplier-ws-cli e mediator-ws-cli com "mvn verify"

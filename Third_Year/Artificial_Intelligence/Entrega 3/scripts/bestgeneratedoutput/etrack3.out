@@ -1,0 +1,30 @@
+
+"----------------------------------" Loading track: etrack3.txt
+-90 
+("POS: (16 7) VEL: (0 0) ACT: (0 0) COST: 0
+"
+ "POS: (16 6) VEL: (0 -1) ACT: (0 -1) COST: 1
+"
+ "POS: (15 5) VEL: (-1 -1) ACT: (-1 0) COST: 1
+"
+ "POS: (14 5) VEL: (-1 0) ACT: (0 1) COST: 1
+"
+ "POS: (12 6) VEL: (-2 1) ACT: (-1 1) COST: 1
+"
+ "POS: (11 8) VEL: (-1 2) ACT: (1 1) COST: 1
+"
+ "POS: (10 11) VEL: (-1 3) ACT: (0 1) COST: 1
+"
+ "POS: (8 14) VEL: (-2 3) ACT: (-1 0) COST: 1
+"
+ "POS: (5 16) VEL: (-3 2) ACT: (-1 -1) COST: 1
+"
+ "POS: (3 19) VEL: (-2 3) ACT: (1 1) COST: 1
+"
+ "POS: (2 23) VEL: (-1 4) ACT: (1 1) COST: 1
+"
+ "POS: (2 28) VEL: (0 5) ACT: (1 1) COST: -100
+") 
+Computation took: 0.2201545 seconds of real time
+
+"----------------------------------" 
