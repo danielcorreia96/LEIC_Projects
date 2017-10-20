@@ -19,8 +19,8 @@ Note: the original portuguese course name is "LEIC-A" which stands for "Licencia
 ### Third Year 
   * [Computer Graphics (Javascript)](/Third_Year/Computer_Graphics/)
   * [Databases (SQL/PHP)](/Third_Year/Databases/)
-  * Artificial Intelligence (Common Lisp) (coming soon...)
+  * [Artificial Intelligence (Lisp)](/Third_Year/Artificial_Intelligence/)
   * [Computer Networks (Python)](/Third_Year/Computer_Networks/)
-  * Distributed Systems (Java) (coming soon...)
-  * Software Engineering (Java) (coming soon...)
+  * [Distributed Systems (Java)](/Third_Year/Distributed_Systems/)
+  * [Software Engineering (Java)](/Third_Year/Software_Engineering/)
   * Compilers (C++) (coming soon...)
