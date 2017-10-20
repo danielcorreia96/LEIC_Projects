@@ -1,0 +1,48 @@
+
+"----------------------------------" Loading track: trackInterpol.txt
+-80 
+("POS: (9 11) VEL: (0 0) ACT: NIL COST: 0
+"
+ "POS: (9 10) VEL: (0 -1) ACT: (0 -1) COST: 1
+"
+ "POS: (9 8) VEL: (0 -2) ACT: (0 -1) COST: 1
+"
+ "POS: (9 5) VEL: (0 -3) ACT: (0 -1) COST: 1
+"
+ "POS: (9 3) VEL: (0 -2) ACT: (0 1) COST: 1
+"
+ "POS: (9 1) VEL: (0 -2) ACT: (0 0) COST: 1
+"
+ "POS: (8 0) VEL: (-1 -1) ACT: (-1 1) COST: 1
+"
+ "POS: (8 0) VEL: (0 0) ACT: (1 1) COST: 1
+"
+ "POS: (7 1) VEL: (-1 1) ACT: (-1 1) COST: 1
+"
+ "POS: (7 3) VEL: (0 2) ACT: (1 1) COST: 1
+"
+ "POS: (7 6) VEL: (0 3) ACT: (0 1) COST: 1
+"
+ "POS: (7 9) VEL: (0 3) ACT: (0 0) COST: 1
+"
+ "POS: (7 11) VEL: (0 2) ACT: (0 -1) COST: 1
+"
+ "POS: (7 13) VEL: (0 2) ACT: (0 0) COST: 1
+"
+ "POS: (6 14) VEL: (-1 1) ACT: (-1 -1) COST: 1
+"
+ "POS: (4 14) VEL: (-2 0) ACT: (-1 -1) COST: 1
+"
+ "POS: (2 14) VEL: (-2 0) ACT: (0 0) COST: 1
+"
+ "POS: (1 15) VEL: (-1 1) ACT: (1 1) COST: 1
+"
+ "POS: (1 17) VEL: (0 2) ACT: (1 1) COST: 1
+"
+ "POS: (1 20) VEL: (0 3) ACT: (0 1) COST: 1
+"
+ "POS: (1 23) VEL: (0 3) ACT: (0 0) COST: 1
+"
+ "POS: (0 25) VEL: (-1 2) ACT: (-1 -1) COST: -100
+") 
+"----------------------------------" 

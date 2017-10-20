@@ -1,0 +1,16 @@
+
+"----------------------------------" Loading track: track2.txt
+-97 
+("POS: (1 1) VEL: (0 0) ACT: (0 0) COST: 0
+"
+ "POS: (1 2) VEL: (0 1) ACT: (0 1) COST: 1
+"
+ "POS: (1 4) VEL: (0 2) ACT: (0 1) COST: 1
+"
+ "POS: (1 7) VEL: (0 3) ACT: (0 1) COST: 1
+"
+ "POS: (1 11) VEL: (0 4) ACT: (0 1) COST: -100
+") 
+Computation took: 0.0180106 seconds of real time
+
+"----------------------------------" 

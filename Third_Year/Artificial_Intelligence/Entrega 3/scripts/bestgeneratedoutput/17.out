@@ -1,0 +1,32 @@
+
+"----------------------------------" Loading track: 17.txt
+-89 
+("POS: (0 1) VEL: (0 0) ACT: (0 0) COST: 0
+"
+ "POS: (0 2) VEL: (0 1) ACT: (0 1) COST: 1
+"
+ "POS: (1 4) VEL: (1 2) ACT: (1 1) COST: 1
+"
+ "POS: (2 6) VEL: (1 2) ACT: (0 0) COST: 1
+"
+ "POS: (4 9) VEL: (2 3) ACT: (1 1) COST: 1
+"
+ "POS: (7 13) VEL: (3 4) ACT: (1 1) COST: 1
+"
+ "POS: (11 17) VEL: (4 4) ACT: (1 0) COST: 1
+"
+ "POS: (16 20) VEL: (5 3) ACT: (1 -1) COST: 1
+"
+ "POS: (22 24) VEL: (6 4) ACT: (1 1) COST: 1
+"
+ "POS: (29 28) VEL: (7 4) ACT: (1 0) COST: 1
+"
+ "POS: (36 33) VEL: (7 5) ACT: (0 1) COST: 1
+"
+ "POS: (43 38) VEL: (7 5) ACT: (0 0) COST: 1
+"
+ "POS: (49 43) VEL: (6 5) ACT: (-1 0) COST: -100
+") 
+Computation took: 0.0620601 seconds of real time
+
+"----------------------------------" 

@@ -1,0 +1,80 @@
+
+"----------------------------------" Loading track: trackCIA.txt
+-64 
+("POS: (9 25) VEL: (0 0) ACT: NIL COST: 0
+"
+ "POS: (9 24) VEL: (0 -1) ACT: (0 -1) COST: 1
+"
+ "POS: (9 22) VEL: (0 -2) ACT: (0 -1) COST: 1
+"
+ "POS: (9 19) VEL: (0 -3) ACT: (0 -1) COST: 1
+"
+ "POS: (9 15) VEL: (0 -4) ACT: (0 -1) COST: 1
+"
+ "POS: (9 10) VEL: (0 -5) ACT: (0 -1) COST: 1
+"
+ "POS: (9 6) VEL: (0 -4) ACT: (0 1) COST: 1
+"
+ "POS: (9 3) VEL: (0 -3) ACT: (0 1) COST: 1
+"
+ "POS: (9 1) VEL: (0 -2) ACT: (0 1) COST: 1
+"
+ "POS: (8 0) VEL: (-1 -1) ACT: (-1 1) COST: 1
+"
+ "POS: (7 0) VEL: (-1 0) ACT: (0 1) COST: 1
+"
+ "POS: (7 1) VEL: (0 1) ACT: (1 1) COST: 1
+"
+ "POS: (7 3) VEL: (0 2) ACT: (0 1) COST: 1
+"
+ "POS: (7 6) VEL: (0 3) ACT: (0 1) COST: 1
+"
+ "POS: (7 10) VEL: (0 4) ACT: (0 1) COST: 1
+"
+ "POS: (7 15) VEL: (0 5) ACT: (0 1) COST: 1
+"
+ "POS: (7 19) VEL: (0 4) ACT: (0 -1) COST: 1
+"
+ "POS: (7 22) VEL: (0 3) ACT: (0 -1) COST: 1
+"
+ "POS: (7 24) VEL: (0 2) ACT: (0 -1) COST: 1
+"
+ "POS: (6 25) VEL: (-1 1) ACT: (-1 -1) COST: 1
+"
+ "POS: (5 25) VEL: (-1 0) ACT: (0 -1) COST: 1
+"
+ "POS: (4 24) VEL: (-1 -1) ACT: (0 -1) COST: 1
+"
+ "POS: (4 22) VEL: (0 -2) ACT: (1 -1) COST: 1
+"
+ "POS: (4 19) VEL: (0 -3) ACT: (0 -1) COST: 1
+"
+ "POS: (4 15) VEL: (0 -4) ACT: (0 -1) COST: 1
+"
+ "POS: (4 11) VEL: (0 -4) ACT: (0 0) COST: 1
+"
+ "POS: (4 7) VEL: (0 -4) ACT: (0 0) COST: 1
+"
+ "POS: (4 4) VEL: (0 -3) ACT: (0 1) COST: 1
+"
+ "POS: (4 2) VEL: (0 -2) ACT: (0 1) COST: 1
+"
+ "POS: (3 1) VEL: (-1 -1) ACT: (-1 1) COST: 1
+"
+ "POS: (2 1) VEL: (-1 0) ACT: (0 1) COST: 1
+"
+ "POS: (1 2) VEL: (-1 1) ACT: (0 1) COST: 1
+"
+ "POS: (1 4) VEL: (0 2) ACT: (1 1) COST: 1
+"
+ "POS: (1 7) VEL: (0 3) ACT: (0 1) COST: 1
+"
+ "POS: (1 11) VEL: (0 4) ACT: (0 1) COST: 1
+"
+ "POS: (1 16) VEL: (0 5) ACT: (0 1) COST: 1
+"
+ "POS: (1 21) VEL: (0 5) ACT: (0 0) COST: 1
+"
+ "POS: (0 25) VEL: (-1 4) ACT: (-1 -1) COST: -100
+") 
+"----------------------------------" 

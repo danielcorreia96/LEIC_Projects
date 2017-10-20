@@ -1,0 +1,173 @@
+Testing 3.2-A-star - Output 
+Loading track: trackbest1.txt
+-95 
+ Result: 
+(POS: (4 1) VEL: (0 0) ACT: NIL COST: 0
+
+ POS: (4 2) VEL: (0 1) ACT: (0 1) COST: 1
+
+ POS: (4 4) VEL: (0 2) ACT: (0 1) COST: 1
+
+ POS: (3 7) VEL: (-1 3) ACT: (-1 1) COST: 1
+
+ POS: (2 11) VEL: (-1 4) ACT: (0 1) COST: 1
+
+ POS: (2 16) VEL: (0 5) ACT: (1 1) COST: 1
+
+ POS: (3 22) VEL: (1 6) ACT: (1 1) COST: -100
+)
+Loading track: trackbest2.txt
+-86 
+ Result: 
+(POS: (4 1) VEL: (0 0) ACT: NIL COST: 0
+
+ POS: (4 2) VEL: (0 1) ACT: (0 1) COST: 1
+
+ POS: (4 4) VEL: (0 2) ACT: (0 1) COST: 1
+
+ POS: (3 7) VEL: (-1 3) ACT: (-1 1) COST: 1
+
+ POS: (2 11) VEL: (-1 4) ACT: (0 1) COST: 1
+
+ POS: (1 15) VEL: (-1 4) ACT: (0 0) COST: 1
+
+ POS: (1 18) VEL: (0 3) ACT: (1 -1) COST: 1
+
+ POS: (2 20) VEL: (1 2) ACT: (1 -1) COST: 1
+
+ POS: (4 21) VEL: (2 1) ACT: (1 -1) COST: 1
+
+ POS: (6 21) VEL: (2 0) ACT: (0 -1) COST: 1
+
+ POS: (7 20) VEL: (1 -1) ACT: (-1 -1) COST: 1
+
+ POS: (8 18) VEL: (1 -2) ACT: (0 -1) COST: 1
+
+ POS: (8 15) VEL: (0 -3) ACT: (-1 -1) COST: 1
+
+ POS: (8 11) VEL: (0 -4) ACT: (0 -1) COST: 1
+
+ POS: (9 6) VEL: (1 -5) ACT: (1 -1) COST: 1
+
+ POS: (10 2) VEL: (1 -4) ACT: (0 1) COST: -100
+)
+Loading track: trackbest3.txt
+-90 
+ Result: 
+(POS: (4 1) VEL: (0 0) ACT: NIL COST: 0
+
+ POS: (4 2) VEL: (0 1) ACT: (0 1) COST: 1
+
+ POS: (4 4) VEL: (0 2) ACT: (0 1) COST: 1
+
+ POS: (3 7) VEL: (-1 3) ACT: (-1 1) COST: 1
+
+ POS: (2 11) VEL: (-1 4) ACT: (0 1) COST: 1
+
+ POS: (1 15) VEL: (-1 4) ACT: (0 0) COST: 1
+
+ POS: (1 18) VEL: (0 3) ACT: (1 -1) COST: 1
+
+ POS: (2 20) VEL: (1 2) ACT: (1 -1) COST: 1
+
+ POS: (4 21) VEL: (2 1) ACT: (1 -1) COST: 1
+
+ POS: (6 21) VEL: (2 0) ACT: (0 -1) COST: 1
+
+ POS: (9 20) VEL: (3 -1) ACT: (1 -1) COST: 1
+
+ POS: (12 20) VEL: (3 0) ACT: (0 1) COST: -100
+)
+Loading track: trackbest4.txt
+-73 
+ Result: 
+(POS: (4 1) VEL: (0 0) ACT: NIL COST: 0
+
+ POS: (4 2) VEL: (0 1) ACT: (0 1) COST: 1
+
+ POS: (4 4) VEL: (0 2) ACT: (0 1) COST: 1
+
+ POS: (3 7) VEL: (-1 3) ACT: (-1 1) COST: 1
+
+ POS: (2 11) VEL: (-1 4) ACT: (0 1) COST: 1
+
+ POS: (2 16) VEL: (0 5) ACT: (1 1) COST: 1
+
+ POS: (3 21) VEL: (1 5) ACT: (1 0) COST: 1
+
+ POS: (3 27) VEL: (0 6) ACT: (-1 1) COST: 1
+
+ POS: (3 27) VEL: (0 0) ACT: (0 0) COST: 20
+
+ POS: (2 27) VEL: (-1 0) ACT: (-1 0) COST: -100
+)
+Loading track: trackbest5.txt
+-88 
+ Result: 
+(POS: (4 1) VEL: (0 0) ACT: NIL COST: 0
+
+ POS: (4 2) VEL: (0 1) ACT: (0 1) COST: 1
+
+ POS: (4 4) VEL: (0 2) ACT: (0 1) COST: 1
+
+ POS: (3 7) VEL: (-1 3) ACT: (-1 1) COST: 1
+
+ POS: (2 11) VEL: (-1 4) ACT: (0 1) COST: 1
+
+ POS: (1 15) VEL: (-1 4) ACT: (0 0) COST: 1
+
+ POS: (1 18) VEL: (0 3) ACT: (1 -1) COST: 1
+
+ POS: (2 20) VEL: (1 2) ACT: (1 -1) COST: 1
+
+ POS: (4 21) VEL: (2 1) ACT: (1 -1) COST: 1
+
+ POS: (6 21) VEL: (2 0) ACT: (0 -1) COST: 1
+
+ POS: (9 20) VEL: (3 -1) ACT: (1 -1) COST: 1
+
+ POS: (13 19) VEL: (4 -1) ACT: (1 0) COST: 1
+
+ POS: (18 18) VEL: (5 -1) ACT: (1 0) COST: 1
+
+ POS: (23 18) VEL: (5 0) ACT: (0 1) COST: -100
+)
+Loading track: trackbest6.txt
+-65 
+ Result: 
+(POS: (4 1) VEL: (0 0) ACT: NIL COST: 0
+
+ POS: (4 2) VEL: (0 1) ACT: (0 1) COST: 1
+
+ POS: (4 4) VEL: (0 2) ACT: (0 1) COST: 1
+
+ POS: (3 7) VEL: (-1 3) ACT: (-1 1) COST: 1
+
+ POS: (2 11) VEL: (-1 4) ACT: (0 1) COST: 1
+
+ POS: (1 15) VEL: (-1 4) ACT: (0 0) COST: 1
+
+ POS: (1 18) VEL: (0 3) ACT: (1 -1) COST: 1
+
+ POS: (2 20) VEL: (1 2) ACT: (1 -1) COST: 1
+
+ POS: (4 21) VEL: (2 1) ACT: (1 -1) COST: 1
+
+ POS: (6 21) VEL: (2 0) ACT: (0 -1) COST: 1
+
+ POS: (9 20) VEL: (3 -1) ACT: (1 -1) COST: 1
+
+ POS: (13 19) VEL: (4 -1) ACT: (1 0) COST: 1
+
+ POS: (18 17) VEL: (5 -2) ACT: (1 -1) COST: 1
+
+ POS: (23 16) VEL: (5 -1) ACT: (0 1) COST: 1
+
+ POS: (29 16) VEL: (6 0) ACT: (1 1) COST: 1
+
+ POS: (34 17) VEL: (5 1) ACT: (-1 1) COST: 1
+
+ POS: (34 17) VEL: (0 0) ACT: (0 0) COST: 20
+
+ POS: (34 18) VEL: (0 1) ACT: (0 1) COST: -100
+)
