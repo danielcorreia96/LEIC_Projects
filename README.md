@@ -12,7 +12,7 @@ Note: the original portuguese course name is "LEIC-A" which stands for "Licencia
 
 ### Second Year
   * [Operating Systems (C)](/Second_Year/Operating_Systems/)
-  * Object-Oriented Programming (Java) (coming soon...)
+  * [Object-Oriented Programming (Java)](/Second_Year/Object_Oriented_Programming)
   * [Analysis and Synthesis of Algorithms (C++)](/Second_Year/Analysis_and_Synthesis_of_Algorithms/)
   * [Human Computer Interaction (HTML/CSS/JS/JQuery)](/Second_Year/Human_Computer_Interaction/)
   
