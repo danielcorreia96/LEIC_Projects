@@ -1,0 +1,41 @@
+[POSTFIX: DEBUG @ function_def_node ]: start:   f
+[POSTFIX: DEBUG @ function_def_node ]: type checker was successful
+[POSTFIX: DEBUG @ function_def_node ]: calculating function size
+[POSTFIX: DEBUG @ function_def_node ]: no symbol found for id f
+[POSTFIX: DEBUG @ function_def_node ]: pushing new context
+[POSTFIX: DEBUG @ function_def_node ]: accepting function arguments...
+[POSTFIX: DEBUG @ variable_decl_node ]: start
+[POSTFIX: DEBUG @ variable_decl_node ]: first time i see this symbol in this context: x
+[POSTFIX: DEBUG @ variable_decl_node ]: declaring function argument
+[POSTFIX: DEBUG @ variable_decl_node ]: inserted function argument x  in symbol table 
+[POSTFIX: DEBUG @ block_node ]: start
+[POSTFIX: DEBUG @ assignment_node ]: start
+[POSTFIX: DEBUG @ identifier_node ]: symbol is local id: x
+[POSTFIX: DEBUG @ rvalue_node ]: loading an integer/string/pointer
+[POSTFIX: DEBUG @ identifier_node ]: symbol is local id: f
+[POSTFIX: DEBUG @ assignment_node ]: storing an integer/string/pointer
+[POSTFIX: DEBUG @ assignment_node ]: finish
+[POSTFIX: DEBUG @ evaluation_node ]: finish
+[POSTFIX: DEBUG @ block_node ]: finish
+[POSTFIX: DEBUG @ function_def_node ]: finish
+[POSTFIX: DEBUG @ function_def_node ]: start:   xpl
+[POSTFIX: DEBUG @ function_def_node ]: type checker was successful
+[POSTFIX: DEBUG @ function_def_node ]: calculating function size
+[POSTFIX: DEBUG @ function_def_node ]: no symbol found for id xpl
+[POSTFIX: DEBUG @ function_def_node ]: pushing new context
+[POSTFIX: DEBUG @ function_def_node ]: declaring global function xpl
+[POSTFIX: DEBUG @ integer_node ]: pushing integer onto stack: 0
+[POSTFIX: DEBUG @ function_def_node ]: accepting function arguments...
+[POSTFIX: DEBUG @ block_node ]: start
+[POSTFIX: DEBUG @ println_node ]: start
+[POSTFIX: DEBUG @ function_call_node ]: starting with -> f
+[POSTFIX: DEBUG @ function_call_node ]: doing casts because sequence_node getters return basic_nodes :<
+[POSTFIX: DEBUG @ function_call_node ]: accepting function call arg
+[POSTFIX: DEBUG @ read_node ]: after type checking
+[POSTFIX: DEBUG @ read_node ]: finish read node
+[POSTFIX: DEBUG @ function_call_node ]: calling function f
+[POSTFIX: DEBUG @ function_call_node ]: finish
+imprimi um inteiro??
+[POSTFIX: DEBUG @ println_node ]: finish
+[POSTFIX: DEBUG @ block_node ]: finish
+[POSTFIX: DEBUG @ function_def_node ]: finish
