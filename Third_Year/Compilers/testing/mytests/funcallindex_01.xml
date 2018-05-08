@@ -1,0 +1,52 @@
+<sequence_node size='2'>
+  <function_decl_node>
+    <is_private>true</is_private>
+    <is_imported>true</is_imported>
+    <returnType>int</returnType>
+    <functionName>f</functionName>
+    <arguments>
+      <sequence_node size='0'>
+      </sequence_node>
+    </arguments>
+  </function_decl_node>
+  <function_def_node>
+    <is_private>false</is_private>
+    <returnType>int</returnType>
+    <functionName>xpl</functionName>
+    <returnValue>
+      <integer_node>0</integer_node>
+    </returnValue>
+    <arguments>
+      <sequence_node size='0'>
+      </sequence_node>
+    </arguments>
+    <body>
+      <block_node>
+        <declarations>
+          <sequence_node size='0'>
+          </sequence_node>
+        </declarations>
+        <instructions>
+          <sequence_node size='1'>
+            <print_node>
+              <rvalue_node>
+                  <indexing_node>
+                    <name>
+                      <function_call_node>
+                        <functionName>f</functionName>
+                        <parameters>
+                        </parameters>
+                      </function_call_node>
+                    </name>
+                    <position>
+                      <integer_node>1</integer_node>
+                    </position>
+                  </indexing_node>
+              </rvalue_node>
+            </print_node>
+          </sequence_node>
+        </instructions>
+      </block_node>
+    </body>
+  </function_def_node>
+</sequence_node>

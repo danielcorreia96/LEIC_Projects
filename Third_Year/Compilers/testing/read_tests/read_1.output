@@ -1,0 +1,16 @@
+[POSTFIX: DEBUG @ function_def_node ]: start:   xpl
+[POSTFIX: DEBUG @ function_def_node ]: type checker was successful
+[POSTFIX: DEBUG @ function_def_node ]: calculating function size
+[POSTFIX: DEBUG @ function_def_node ]: no symbol found for id xpl
+[POSTFIX: DEBUG @ function_def_node ]: pushing new context
+[POSTFIX: DEBUG @ function_def_node ]: declaring global function xpl
+[POSTFIX: DEBUG @ integer_node ]: pushing integer onto stack: 0
+[POSTFIX: DEBUG @ function_def_node ]: accepting function arguments...
+[POSTFIX: DEBUG @ block_node ]: start
+[POSTFIX: DEBUG @ println_node ]: start
+[POSTFIX: DEBUG @ read_node ]: after type checking
+[POSTFIX: DEBUG @ read_node ]: finish read node
+imprimi um inteiro??
+[POSTFIX: DEBUG @ println_node ]: finish
+[POSTFIX: DEBUG @ block_node ]: finish
+[POSTFIX: DEBUG @ function_def_node ]: finish

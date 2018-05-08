@@ -1,0 +1,36 @@
+<sequence_node size='1'>
+  <function_def_node>
+    <is_private>false</is_private>
+    <returnType>int</returnType>
+    <functionName>xpl</functionName>
+    <returnValue>
+      <integer_node>0</integer_node>
+    </returnValue>
+    <arguments>
+      <sequence_node size='0'>
+      </sequence_node>
+    </arguments>
+    <body>
+      <block_node>
+        <declarations>
+          <sequence_node size='1'>
+            <variable_decl_node>
+              <is_private>true</is_private>
+              <is_imported>false</is_imported>
+              <variableType>int</variableType>
+              <variableName>a</variableName>
+              <value>
+                <read_node>
+                </read_node>
+              </value>
+            </variable_decl_node>
+          </sequence_node>
+        </declarations>
+        <instructions>
+          <sequence_node size='0'>
+          </sequence_node>
+        </instructions>
+      </block_node>
+    </body>
+  </function_def_node>
+</sequence_node>

@@ -1,0 +1,37 @@
+graph XmlToDot20170505{
+rankdir = TB;
+node [shape=box];
+SEQUENCE_NODEbxennbce -- FUNCTION_DEF_NODElzuguczy
+FUNCTION_DEF_NODElzuguczy -- IS_PRIVATEzypiufsb
+IS_PRIVATEzypiufsb [label="is_private"]
+FUNCTION_DEF_NODElzuguczy -- RETURNTYPEtxtfibuz
+RETURNTYPEtxtfibuz [label="returnType"]
+FUNCTION_DEF_NODElzuguczy -- FUNCTIONNAMEjxfzzomf
+FUNCTIONNAMEjxfzzomf [label="functionName"]
+FUNCTION_DEF_NODElzuguczy -- RETURNVALUEorfnwhjw
+RETURNVALUEorfnwhjw -- INTEGER_NODEwcvyepay
+INTEGER_NODEwcvyepay [label="integer_node"]
+RETURNVALUEorfnwhjw [label="returnValue"]
+FUNCTION_DEF_NODElzuguczy -- ARGUMENTSbqvpsofu
+ARGUMENTSbqvpsofu -- SEQUENCE_NODEubucqalr
+SEQUENCE_NODEubucqalr [label="sequence_node"]
+ARGUMENTSbqvpsofu [label="arguments"]
+FUNCTION_DEF_NODElzuguczy -- BODYqgjwfaxk
+BODYqgjwfaxk -- BLOCK_NODEuznsyyda
+BLOCK_NODEuznsyyda -- DECLARATIONSexzxwapr
+DECLARATIONSexzxwapr -- SEQUENCE_NODEcmtaurxl
+SEQUENCE_NODEcmtaurxl [label="sequence_node"]
+DECLARATIONSexzxwapr [label="declarations"]
+BLOCK_NODEuznsyyda -- INSTRUCTIONShqyswlpy
+INSTRUCTIONShqyswlpy -- SEQUENCE_NODEaonnrcll
+SEQUENCE_NODEaonnrcll -- PRINT_NODEarlbrkce
+PRINT_NODEarlbrkce -- READ_NODEazwccaxf
+READ_NODEazwccaxf [label="read_node"]
+PRINT_NODEarlbrkce [label="print_node"]
+SEQUENCE_NODEaonnrcll [label="sequence_node"]
+INSTRUCTIONShqyswlpy [label="instructions"]
+BLOCK_NODEuznsyyda [label="block_node"]
+BODYqgjwfaxk [label="body"]
+FUNCTION_DEF_NODElzuguczy [label="function_def_node"]
+SEQUENCE_NODEbxennbce [label="sequence_node"]
+}
