@@ -23,4 +23,4 @@ Note: the original portuguese course name is "LEIC-A" which stands for "Licencia
   * [Computer Networks (Python)](/Third_Year/Computer_Networks/)
   * [Distributed Systems (Java)](/Third_Year/Distributed_Systems/)
   * [Software Engineering (Java)](/Third_Year/Software_Engineering/)
-  * Compilers (C++) (coming soon...)
+  * [Compilers (C++)](/Third_Year/Compilers/)
